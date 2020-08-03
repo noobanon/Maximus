@@ -8,8 +8,9 @@ from userbot import LOGGER, LOGGER_GROUP, bot
 from userbot.events import register
 
 
-@register(outgoing=True, pattern="^\.saved$")
+@register(outgoing=True, pattern="^\.notes$")
 async def notes_active(svd):
+    chat = await svd.get_chat()
     if not svd.text[0].isalpha() and svd.text[0] not in ("/", "#", "@", "!"):
         try:
             from userbot.modules.sql_helper.notes_sql import get_notes
@@ -18,11 +19,11 @@ async def notes_active(svd):
             return
 
         notes = get_notes(svd.chat_id)
-        message = '`There are no saved notes in this chat`'
+        message = f'`There are no saved notes in {svd.chat.title}`'
         if notes:
-            message = "Messages saved in this chat: \n\n"
+            message = f"Notes saved in {svd.chat.title}: \n\n"
             for note in notes:
-                message = message + "🔹 " + note.keyword + "\n"
+                message = message + "• " + note.keyword + "\n"
         await svd.edit(message)
 
 
@@ -36,7 +37,7 @@ async def remove_notes(clr):
             return
         notename = clr.pattern_match.group(1)
         rm_note(clr.chat_id, notename)
-        await clr.edit("```Note removed successfully```")
+        await clr.edit(f"```Note {notename} has removed successfully```")
 
 
 @register(outgoing=True, pattern="^\.save (\w*)")
@@ -54,7 +55,7 @@ async def add_filter(fltr):
             string = rep_msg.text
         add_note(str(fltr.chat_id), notename, string)
         await fltr.edit(
-            "`Note added successfully. Use` #{} `to get it`".format(notename)
+            "Note added successfully. Use` #{} `to get it".format(notename)
         )
 
 

@@ -39,6 +39,7 @@ async def filter_incoming_handler(e):
 
 @register(outgoing=True, pattern="^.filter\\s.*")
 async def add_filter(e):
+    chat = await e.get_chat()
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         try:
             from userbot.modules.sql_helper.filter_sql import add_filter
@@ -51,7 +52,7 @@ async def add_filter(e):
         for i in range(2, len(kek)):
             string = string + " " + str(kek[i])
         add_filter(str(e.chat_id), kek[1], string)
-        await e.edit("```Filter added successfully```")
+        await e.edit(f"Filter `{string}` added successfully in {e.chat.title}.")
 
 
 @register(outgoing=True, pattern="^.stop\\s.*")
@@ -65,7 +66,7 @@ async def remove_filter(e):
         message = e.text
         kek = message.split(" ")
         remove_filter(e.chat_id, kek[1])
-        await e.edit("```Filter removed successfully```")
+        await e.edit(f"```That filter has been removed successfully from {e.chat.title}```")
 
 
 @register(outgoing=True, pattern="^.rmfilters$")
@@ -95,8 +96,8 @@ async def filters_active(e):
             from userbot.modules.sql_helper.filter_sql import get_filters
         except:
             return
-        transact = "Filters active on this chat: \n\n"
+        transact = f"Filters active in {e.chat.title}: \n\n"
         filters = get_filters(e.chat_id)
         for i in filters:
-            transact = transact + "🔹 " + i.keyword + "\n"
+            transact = transact + "• " + i.keyword + "\n"
         await e.edit(transact)
