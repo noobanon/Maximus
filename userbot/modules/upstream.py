@@ -26,7 +26,7 @@ async def bleeding_upstream(bleed):
             "remote",
             "add",
             "origin",
-            "https://github.com/baalajimaestro/Telegram-UserBot"
+            "https://github.com/Nitin1818/UserBotN"
         ], stdout=subprocess.PIPE,)
 
     subprocess.run(
@@ -72,7 +72,7 @@ async def stable_upstream(stable):
             "remote",
             "add",
             "origin",
-            "https://github.com/baalajimaestro/Telegram-UserBot"
+            "https://github.com/Nitin1818/UserBotN"
         ], stdout=subprocess.PIPE,)
 
     subprocess.run(
