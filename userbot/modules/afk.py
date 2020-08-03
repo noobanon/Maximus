@@ -130,7 +130,7 @@ async def set_afk(e):
             string=''
         global ISAFK
         global AFKREASON
-        await e.edit("AFK AF!")
+        await e.edit("Away from cunsur world!")
         if string != "":
             AFKREASON = string
         await e.client.send_message(LOGGER_GROUP, "You went AFK!")
