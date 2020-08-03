@@ -158,7 +158,7 @@ async def jaja(k):
 
 @register(outgoing=True, pattern="^aviral$")
 async def scam(er):
-    await er.edit("noob scammer kid chkout @biggestripper")
+    await er.edit("noob scammer kid chkout @biggestrippers")
 
 
 @register(outgoing=True, pattern="^.owo (.*)")
