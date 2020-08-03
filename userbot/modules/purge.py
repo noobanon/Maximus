@@ -18,14 +18,13 @@ from userbot.events import register
 async def fastpurger(purg):
     if not purg.text[0].isalpha() and purg.text[0] not in ("/", "#", "@", "!"):
         chat = await purg.get_input_chat()
+        itermsg = purg.client.iter_messages(chat, min_id=purg.reply_to_msg_id)
         msgs = []
         count = 0
-        async with aclosing(
-                purg.client.iter_messages(chat, min_id=purg.reply_to_msg_id)
-        )as replies:
-
-            async for smsgs in replies:
-                msgs.append(smsgs)
+        
+        if purg.reply_to_msg_id is not None:
+            async for msg in itermsg:
+                msgs.append(msg)
                 count = count + 1
                 msgs.append(purg.reply_to_msg_id)
                 if len(msgs) == 100:
