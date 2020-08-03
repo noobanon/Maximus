@@ -148,7 +148,17 @@ async def zal(zgfy):
 
 @register(outgoing=True, pattern="^hi$")
 async def hoi(ha):
-    await ha.edit("Hoi!😄")
+    await ha.edit("Hola!👋")
+  
+
+@register(outgoing=True, pattern="^ja$")
+async def jaja(k):
+    await k.edit("jajajajaja")
+ 
+
+@register(outgoing=True, pattern="^aviral$")
+async def scam(er):
+    await er.edit("noob scammer kid chkout @biggestripper")
 
 
 @register(outgoing=True, pattern="^.owo (.*)")
