@@ -1,6 +1,6 @@
-[![DeepSource](https://static.deepsource.io/deepsource-badge-dark-mini.svg)](https://deepsource.io/gh/Nitin1818/UserbotN/?ref=repository-badge)
+[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Nitin1818/UserbotN/?ref=repository-badge)
 
----
+
 [![CodeFactor](https://www.codefactor.io/repository/github/nitin1818/userbotn/badge)](https://www.codefactor.io/repository/github/nitin1818/userbotn)
 
 ---
