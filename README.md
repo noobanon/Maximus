@@ -1,3 +1,9 @@
+[![DeepSource](https://static.deepsource.io/deepsource-badge-dark-mini.svg)](https://deepsource.io/gh/Nitin1818/UserbotN/?ref=repository-badge)
+
+---
+[![CodeFactor](https://www.codefactor.io/repository/github/nitin1818/userbotn/badge)](https://www.codefactor.io/repository/github/nitin1818/userbotn)
+
+---
 # Telegram-UserBot
 
  #### To track Semaphore builds, see the commits section. Since I use Semaphore 2.0, it is not possible to track the progress fully, or put a badge here. Ignore Travis CI for PRs.
