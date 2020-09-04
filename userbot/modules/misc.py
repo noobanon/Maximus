@@ -177,7 +177,7 @@ async def sleepybot(e):
 @register(outgoing=True, pattern="^.shutdown$")
 async def killdabot(e):
     if not e.text[0].isalpha():
-        await e.edit("Goodbye *Windows XP shutdown sound*....")
+        await e.edit("Goodbye **Windows XP shutdown sound**....")
         await e.client.send_message(LOGGER_GROUP, "You REALLY shutdown the bot")
         await e.client.disconnect()
 
@@ -185,19 +185,19 @@ async def killdabot(e):
 @register(outgoing=True, pattern="^.support$")
 async def bot_support(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("Report bugs here: @userbot_support")
+        await e.edit("Report bugs here: @binverse2")
 
 
 @register(outgoing=True, pattern="^.repo$")
 async def repo_is_here(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("*Here is the repo that I'm using* `https://github.com/Nitin1818/UserBotN`")
+        await e.edit("**Here is the repo that I'm using** `https://github.com/Nitin1818/UserBotN`")
 
 
 @register(outgoing=True, pattern="^.supportchannel$")
 async def support_channel(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("t.me/maestro_userbot_channel")
+        await e.edit("t.me/seemoibio")
 
 
 @register(outgoing=True, pattern="^.userid$")
