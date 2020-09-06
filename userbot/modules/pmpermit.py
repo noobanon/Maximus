@@ -26,14 +26,14 @@ async def permitpm(e):
 
             if not apprv and e.text != \
                 ("`Bleep Blop! This is a Bot. Don't fret. \n\n`"
-                 "`My Master hasn't approved you to PM. Join` @Binverse2. \n\n"
-                 "`Please wait for my Master to look in, he would mostly approve PMs.`\n\n"
-                 "`As far as i know, he doesn't usually approve Retards.`"):
+                 "`My Master hasn't approved you to PM.`. \n\n"
+                 "`If You Are Hater then Maderchod Maa Chudao Bhosdike MaderHod`\n\n"
+                 "`If You Are One Of My Friends Kindly Wait Till Me Come Online.`"):
 
                 await e.reply(
                     "`Bleep Blop! This is a Bot. Don't fret. \n\n`"
-                    "`My Master hasn't approved you to PM. Join` @binverse2 \n\n"
-                    "`Please wait for my Master to look in, he would mostly approve PMs.`\n\n"
+                    "`If You Are Hater then Maderchod Maa Chudao Bhosdike MaderHod` \n\n"
+                    "`If You Are One Of My Friends Kindly Wait Till Me Come Online.`\n\n"
                     "`As far as i know, he doesn't usually approve Retards.`"
                 )
 
