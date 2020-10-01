@@ -41,7 +41,7 @@ except NameError:
     API_HASH = os.environ.get("API_HASH", None)
     
     SUDO_USERS = os.environ.get("SUDO_USERS", None)
-    
+    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 
     LOGGER_GROUP = int(os.environ.get("LOGGER_GROUP", "0"))
 
