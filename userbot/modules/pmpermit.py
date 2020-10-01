@@ -8,6 +8,7 @@ from telethon.tl.functions.contacts import BlockRequest
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import User
 
 from userbot import COUNT_PM, LOGGER, LOGGER_GROUP, NOTIF_OFF, PM_AUTO_BAN
 from userbot.events import register
