@@ -185,19 +185,19 @@ async def killdabot(e):
 @register(outgoing=True, pattern="^.support$")
 async def bot_support(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("Report bugs here: @binverse2")
+        await e.edit("Report bugs here: [Join](https://t.me/joinchat/QQl3l1TPa5d6pGnniqBJ_Q)")
 
 
 @register(outgoing=True, pattern="^.repo$")
 async def repo_is_here(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("**Here is the repo that I'm using** `https://github.com/Nitin1818/UserBotN`")
+        await e.edit(" **Take This Pro Repo** [REPO](https://github.com/noobanon/V.I.R.G.I.L)")
 
 
 @register(outgoing=True, pattern="^.supportchannel$")
 async def support_channel(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("t.me/seemoibio")
+        await e.edit("https://t.me/joinchat/QQl3l1TPa5d6pGnniqBJ_Q")
 
 
 @register(outgoing=True, pattern="^.userid$")
