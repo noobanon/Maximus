@@ -148,7 +148,12 @@ async def randomise(e):
 @register(outgoing=True, pattern="^.alive$")
 async def amialive(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("`Yo Master! I am alive 🙃`")
+        await alive.edit("`"
+                     "Me'Alive!:D #MaderChox_Dunia\n\n"
+                     f"•#Rendi Bot•: Vr: 69 \n"
+                     f"•#Bedard_duniya•:😢 \n"
+                     f"•Cracked By•: MR.ANON 👑 "
+                     "`")
 
 
 @register(outgoing=True, pattern="^.chatid$")
