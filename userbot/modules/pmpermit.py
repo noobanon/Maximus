@@ -46,7 +46,7 @@ async def permitpm(e):
                 if COUNT_PM[e.chat_id] > 3:
                     await e.respond(
                         "`You were spamming my Master's PM, which I don't like.`"
-                        "`I'mma Report Spam.`"
+                        "`Reported Spam Of This MaderChod.`"
                     )
                     del COUNT_PM[e.chat_id]
                     await e.client(BlockRequest(e.chat_id))
