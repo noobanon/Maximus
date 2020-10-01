@@ -52,6 +52,8 @@ def register(**args):
 
     def decorator(func):
         async def wrapper(check):
+            bot.add_event_handler(func, events.NewMessage(**args))
+            bot.add_event_handler(func, events.MessageEdited(**args))
             if not LOGSPAMMER:
                 send_to = check.chat_id
             else:
