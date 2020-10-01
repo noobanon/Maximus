@@ -88,11 +88,11 @@ async def auto_accept(event):
                     except IntegrityError:
                         return
 
-                if LOGGER:
+        if LOGGER:
             await apprvpm.client.send_message(
                 LOGGER_GROUP,
                 f"[{name0}](tg://user?id={apprvpm.chat_id})"
-                " Auto Approved.",
+                " was approved to PM you.",
             )
 
 @register(outgoing=True, pattern="^.notifoff$")
