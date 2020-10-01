@@ -79,7 +79,7 @@ async def notifon(e):
     await e.edit("`Notifications unmuted!`")
 
 
-@register(outgoing=True, pattern="^.a$")
+@register(outgoing=True, pattern="^.pm$")
 async def approvepm(apprvpm):
     if not apprvpm.text[0].isalpha() and apprvpm.text[0] not in ("/", "#", "@", "!"):
         try:
