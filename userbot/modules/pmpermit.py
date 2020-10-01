@@ -88,13 +88,12 @@ async def auto_accept(event):
                     except IntegrityError:
                         return
 
-                if is_approved(event.chat_id) and BOTLOG:
-                    await event.client.send_message(
-                        BOTLOG_CHATID,
-                        "#AUTO-APPROVED\n"
-                        + "User: " +
-                        f"[{chat.first_name}](tg://user?id={chat.id})",
-                    )
+                if LOGGER:
+            await apprvpm.client.send_message(
+                LOGGER_GROUP,
+                f"[{name0}](tg://user?id={apprvpm.chat_id})"
+                " Auto Approved.",
+            )
 
 @register(outgoing=True, pattern="^.notifoff$")
 async def notifoff(e):
