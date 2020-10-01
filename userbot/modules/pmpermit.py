@@ -105,18 +105,12 @@ async def approvepm(apprvpm):
             f"[{name0}](tg://user?id={apprvpm.chat_id}) `User Approved to PM!`"
             )
 
-        
-            await message.delete()
-
         if LOGGER:
             await apprvpm.client.send_message(
                 LOGGER_GROUP,
                 f"[{name0}](tg://user?id={apprvpm.chat_id})"
-                " was approved to PM you.",
+                "Was Approved to PM you.",
             )
-
-
-
 
 @register(outgoing=True, pattern="^.b$")
 async def blockpm(block):
