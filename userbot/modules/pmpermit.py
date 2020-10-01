@@ -104,7 +104,7 @@ async def approvepm(apprvpm):
         await apprvpm.edit(
             f"[{name0}](tg://user?id={apprvpm.chat_id}) `User Approved to PM!`"
             )
-        await message.delete()
+        await e.delete()
 
         if LOGGER:
             await apprvpm.client.send_message(
