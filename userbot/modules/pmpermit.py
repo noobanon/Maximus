@@ -65,36 +65,7 @@ async def permitpm(e):
                             + " was just another retarded nibba",
                         )
 
-@register(disable_edited=True, outgoing=True)
-async def auto_accept(event):
-    """ Will approve automatically if you texted them first. """
-    self_user = await event.client.get_me()
-    if event.is_private and event.chat_id != 777000 and event.chat_id != self_user.id and not (await event.get_sender()).bot:
-        try:
-            from userbot.modules.sql_helper.pm_permit_sql import is_approved
-            from userbot.modules.sql_helper.pm_permit_sql import approve
-        except AttributeError:
-            return
 
-        chat = await event.get_chat()
-        if isinstance(chat, User):
-            if is_approved(event.chat_id) or chat.bot:
-                return
-            async for message in event.client.iter_messages(
-                    event.chat_id, reverse=True, limit=1
-            ):
-                if message.message is not UNAPPROVED_MSG and message.from_id == (await event.client.get_me()).id:
-                    try:
-                        approve(event.chat_id)
-                    except IntegrityError:
-                        return
-
-        if LOGGER:
-            await apprvpm.client.send_message(
-                LOGGER_GROUP,
-                f"[{name0}](tg://user?id={apprvpm.chat_id})"
-                " was approved to PM you.",
-            )
 
 @register(outgoing=True, pattern="^.notifoff$")
 async def notifoff(e):
@@ -131,13 +102,10 @@ async def approvepm(apprvpm):
             name0 = str(aname.first_name)
 
         await apprvpm.edit(
-            f"[{name0}](tg://user?id={uid}) ` #Maderbsdk Approved to PM uh Sir Kek!`"
-        )
+            f"[{name0}](tg://user?id={apprvpm.chat_id}) `User Approved to PM!`"
+            )
 
-        async for message in apprvpm.client.iter_messages(apprvpm.chat_id, 
-                                                          from_user='me', 
-                                                          search=UNAPPROVED_MSG, 
-                                                          limit=1):
+        
             await message.delete()
 
         if LOGGER:
@@ -147,29 +115,7 @@ async def approvepm(apprvpm):
                 " was approved to PM you.",
             )
 
-@register(outgoing=True, pattern="^.dis$")
-async def disapprovepm(disapprvpm):
-    if not disapprvpm.text[0].isalpha() and disapprvpm.text[0] not in ("/", "#", "@", "!"):
-        try:
-            from userbot.modules.sql_helper.pm_permit_sql import dissprove
-        except:
-            await disapprvpm.edit("`Running on Non-SQL mode!`")
-            return
 
-        if disapprvpm.reply_to_msg_id:
-            reply = await disapprvpm.get_reply_message()
-            replied_user = await disapprvpm.client(GetFullUserRequest(reply.from_id))
-            aname = replied_user.user.id
-            name0 = str(replied_user.user.first_name)
-            dissprove(replied_user.user.id)
-        else:
-            dissprove(disapprvpm.chat_id)
-            aname = await disapprvpm.client.get_entity(disapprvpm.chat_id)
-            name0 = str(aname.first_name)
-
-        await disapprvpm.edit(
-            f"[{name0}](tg://user?id={disapprvpm.chat_id}) `Gey Nimba disapproved to PM KEK!`"
-            )
 
 
 @register(outgoing=True, pattern="^.b$")
