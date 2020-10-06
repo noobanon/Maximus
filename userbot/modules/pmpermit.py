@@ -29,6 +29,7 @@ async def permitpm(e):
                 ("`Bleep Blop! This is a Bot. Don't fret. \n\n`"
                  "`My Master hasn't approved you to PM.`. \n\n"
                  "`If You Are Hater then Maderchod Maa Chudao Bhosdike MaderHod`\n\n"
+                 "`Currently i'm offline you can get help in @zonerschat join @mkzone For new Bins`\n\n"
                  "`If You Are One Of My Friends Kindly Wait Till Me Come Online.`"):
 
                 await e.reply(
