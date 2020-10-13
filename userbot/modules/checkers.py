@@ -6,7 +6,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot import bot, CMD_HELP
 from userbot.events import register
 
-
+#Module By @noobanon thnxkk bye :)
 @register(outgoing=True, pattern="^.gen(?: |$)(.*)")
 async def pembohong(gen):
     if gen.fwd_from:
