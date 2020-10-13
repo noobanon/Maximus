@@ -6,7 +6,7 @@ from userbot.events import register
 from userbot import bot
 
 
-@register(outgoing=True, pattern="^.add$")
+@register(outgoing=True, pattern="^\.add$")
 async def add(event):
     if event.fwd_from:
         return
