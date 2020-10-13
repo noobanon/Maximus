@@ -93,8 +93,6 @@ else:
                          auto_reconnect=False,
                          lang_code='en')
 
-#BotHelp
-bot = TelegramClient("userbot", API_KEY, API_HASH)
 # Global Variables
 SNIPE_TEXT = ""
 COUNT_MSG = 0
