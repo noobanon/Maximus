@@ -7,6 +7,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot import bot, CMD_HELP
 from userbot.events import register
 
+#Module By @noobanon Kkthnx bye ;/
 @register(outgoing=True, pattern="^.sg(?: |$)(.*)")
 async def lastname(steal):
     if steal.fwd_from:
