@@ -3,6 +3,7 @@ Syntax: .invite <User(s)>"""
 
 from telethon import functions
 from userbot.events import register
+from userbot import bot
 
 
 @register(outgoing=True, pattern="^.add$")
