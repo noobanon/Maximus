@@ -51,29 +51,32 @@ async def fastpurger(purg):
 
 @register(outgoing=True, pattern="^.purgeme")
 async def purgeme(delme):
-    """ For .purgeme, delete x count of your latest message."""
-    message = delme.text
-    count = int(message[9:])
-    i = 1
+    if not delme.text[0].isalpha() and delme.text[0] not in ("/", "#", "@", "!"):
+        message = delme.text
+        self_id = await delme.client.get_peer_id('me')
+        count = int(message[9:])
+        i = 1
 
-    async for message in delme.client.iter_messages(delme.chat_id,
-                                                    from_user='me'):
-        if i > count + 1:
-            break
-        i = i + 1
-        await message.delete()
+        async for message in delme.client.iter_messages(delme.chat_id, self_id):
+            if i > count + 1:
+                break
+            i = i + 1
+            await message.delete()
 
-    smsg = await delme.client.send_message(
-        delme.chat_id,
-        "`Purge complete!` Purged " + str(count) + " messages.",
-    )
-    if BOTLOG:
-        await delme.client.send_message(
-            BOTLOG_CHATID,
-            "Purge of " + str(count) + " messages done successfully.")
-    await sleep(2)
-    i = 1
-    await smsg.delete()
+        smsg = await delme.client.send_message(
+            delme.chat_id,
+            "`Purge complete!` Purged "
+            + str(count)
+            + " messages. **This auto-generated message shall be self destructed in 2 seconds.**",
+        )
+        if LOGGER:
+            await delme.client.send_message(
+                LOGGER_GROUP, "Purge of " +
+                str(count) + " messages done successfully."
+            )
+        time.sleep(2)
+        i = 1
+        await smsg.delete()
 
 
 @register(outgoing=True, pattern="^.delmsg$")
