@@ -1,5 +1,5 @@
 # Copyright (C) 2019 .
-#
+# USE /generate and send message then reply message .fakemail and get email
 import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
