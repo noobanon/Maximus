@@ -1,4 +1,4 @@
-# USE /generate and send message then reply message .gen and get email
+# USE !bin and send message then reply message .gen and get email
 import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
