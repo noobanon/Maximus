@@ -27,7 +27,7 @@ CHAT_PP_ERROR = "`Some issue with updating the pic,`" \
                 "`or don't have the desired rights.`"
 INVALID_MEDIA = "`Invalid Extension`"
 
-@register(outgoing=True, group_only=True, pattern="^.promote(?: |$)(.*)")
+@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
 async def promote(promt):
     """ For .promote command, do promote targeted person """
     # Get targeted chat
