@@ -12,6 +12,7 @@ from telethon import functions
 
 from userbot.events import register
 
+from userbot import CMD_HELP
 
 @register(outgoing=True, pattern="^.speed$")
 async def speedtst(spd):
