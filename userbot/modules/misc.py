@@ -16,6 +16,7 @@ from requests import get, post
 
 from userbot.events import register
 from userbot import LOGGER, LOGGER_GROUP, bot
+from userbot import CMD_HELP
 
 DOGBIN_URL = "https://del.dog/"
 
