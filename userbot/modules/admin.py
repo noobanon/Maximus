@@ -26,7 +26,7 @@ async def promote(promt):
 
     # If not admin and not creator, also return
     if not admin and not creator:
-        await promt.edit(Ummm I'm not admin here)
+        await promt.edit("Ummm I'm not admin here")
         return
 
     new_rights = ChatAdminRights(add_admins=False,
