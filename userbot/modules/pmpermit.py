@@ -12,7 +12,7 @@ from telethon.tl.types import User
 
 from userbot import COUNT_PM, LOGGER, LOGGER_GROUP, NOTIF_OFF, PM_AUTO_BAN
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(incoming=True)
 async def permitpm(e):
