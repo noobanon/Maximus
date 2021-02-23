@@ -148,7 +148,7 @@ async def randomise(e):
 
 @register(outgoing=True, pattern="^.alive$")
 async def alive(a):
-    reply_msg = f"**[MR.ANON](https://github.com/noobanon/Dante)**\n"
+    reply_msg = f"**[MR.ANON](https://github.com/noobanon/Maximus)**\n"
     reply_msg += f"Status : Alive`\n"
     reply_msg += f"Made By ❤ With @Telethon`\n"
     photo = "https://telegra.ph/file/828d4ae9568905fcad0af.jpg"
