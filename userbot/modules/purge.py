@@ -139,7 +139,7 @@ async def selfdestruct(destroy):
 
 CMD_HELP.update(
     {
-        "Purge": """
+        "purge": """
 『 **Purges/Delete** 』
   `.purge` -> Delete all replied Messages Or Chat.
   `.purgeme` -> Delete only your sended all message.
