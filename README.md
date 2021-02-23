@@ -1,7 +1,4 @@
-[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/noobanon/Maximus?ref=repository-badge)
-
-
-[![CodeFactor](https://www.codefactor.io/repository/github/noobanon/Maximus/badge)](https://www.codefactor.io/repository/github/noobanon/Maximus)
+[![Maximus](https://telegra.ph/file/66cdc2a48c85419a03e93.jpg)]
 
 ---
 # Telegram-UserBot
