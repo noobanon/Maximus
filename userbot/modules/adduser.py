@@ -50,3 +50,12 @@ async def _(event):
                         await event.reply(str(e))
                         return
                     await event.edit("Added Successfully")
+
+CMD_HELP.update(
+    {
+        "InviteUsers": """
+『 **Greetings** 』
+  `.add` @username ->  for inviting anyone use .add @username .
+  """
+    }
+)
