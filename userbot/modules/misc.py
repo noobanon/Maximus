@@ -152,7 +152,7 @@ async def alive(a):
     reply_msg += f"Made By @Telethon`\n"
     photo = "https://telegra.ph/file/fc9ff24cf520cb99afce5.jpg"
     await a.delete()
-    await bot.send_photo(a.chat.id, photo, caption=reply_msg)
+    await bot.send_file(a.chat.id, photo, caption=reply_msg)
 
 
 @register(outgoing=True, pattern="^.chatid$")
