@@ -28,7 +28,6 @@ CHAT_PP_ERROR = "`Some issue with updating the pic,`" \
 INVALID_MEDIA = "`Invalid Extension`"
 
 @register(outgoing=True, group_only=True, pattern="^.promote(?: |$)(.*)")
-@grp_exclude()
 async def promote(promt):
     """ For .promote command, do promote targeted person """
     # Get targeted chat
@@ -68,7 +67,6 @@ async def promote(promt):
     except BadRequestError:
         await promt.edit(NO_PERM)
         return
-
 
 @register(outgoing=True, pattern="^.demote$")
 async def demote(dmod):
