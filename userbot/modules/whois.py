@@ -12,6 +12,7 @@ from telethon.tl.types import MessageEntityMentionName, User, UserFull
 from telethon.utils import get_input_location
 
 from userbot.events import register
+from userbot import CMD_HELP
 
 TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./")
 
