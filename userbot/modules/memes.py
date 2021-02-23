@@ -432,7 +432,7 @@ async def typewriter(typew):
             await asyncio.sleep(sleep_time)
 
 CMD_HELP.update({
-    "Memes": ".cowsay\
+    "memes": ".cowsay\
 \nUsage: cow which says things.\
 \n\n.milksay\
 \nUsage: Weird Milk that can speak\
