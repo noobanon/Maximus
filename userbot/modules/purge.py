@@ -12,7 +12,7 @@ from telethon.errors import rpcbaseerrors
 
 from userbot import LOGGER, LOGGER_GROUP
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(outgoing=True, pattern="^.purge$")
 async def fastpurger(purg):
