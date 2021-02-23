@@ -15,7 +15,7 @@ from zalgo_text import zalgo
 
 from userbot import (DISABLE_RUN, WIDE_MAP)
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(outgoing=True, pattern="^:/$")
 async def kek(keks):
