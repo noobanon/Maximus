@@ -168,3 +168,16 @@ async def unblockpm(unblock):
                 f"[{name0}](tg://user?id={unblock.chat_id})"
                 " was unblocc'd!.",
             )
+
+CMD_HELP.update(
+    {
+        "PM": """
+『 **PM OPTIONS** 』
+  `.ub`  -> Unblock User From Your PM.
+  `.notifon`  -> Notification Turned On.
+  `.notifoff -> Notification Turned Off.
+  `.pm` -> Allows a user to PM you.
+  `.b` -> Block a user to PM you.
+  """
+    }
+)
