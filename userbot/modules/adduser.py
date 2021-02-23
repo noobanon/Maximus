@@ -53,7 +53,7 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "InviteUsers": """
+        "inviteusers": """
 『 **Invite** 』
   `.add` @username ->  for inviting anyone use .add @username .
   """
