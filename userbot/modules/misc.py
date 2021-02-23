@@ -15,7 +15,7 @@ import pybase64
 from requests import get, post
 
 from userbot.events import register
-from userbot import LOGGER, LOGGER_GROUP
+from userbot import LOGGER, LOGGER_GROUP, bot
 
 DOGBIN_URL = "https://del.dog/"
 
@@ -152,7 +152,7 @@ async def alive(a):
     reply_msg += f"Made By @Telethon`\n"
     photo = "https://telegra.ph/file/fc9ff24cf520cb99afce5.jpg"
     await a.delete()
-    await app.send_photo(a.chat.id, photo, caption=reply_msg)
+    await bot.send_photo(a.chat.id, photo, caption=reply_msg)
 
 
 @register(outgoing=True, pattern="^.chatid$")
