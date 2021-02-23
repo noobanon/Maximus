@@ -9,7 +9,7 @@ from telethon.errors import BadRequestError
 from telethon.errors.rpcerrorlist import UserIdInvalidError
 from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
 
-from telethon.tl.types import ChatAdminRights, ChatBannedRights
+from telethon.tl.types import ChatAdminRights, ChatBannedRights, MessageEntityMentionName, MessageMediaPhoto,
 
 from userbot import (LOGGER, LOGGER_GROUP)
 from userbot.events import register
@@ -63,7 +63,7 @@ async def get_user_from_event(event):
 
 @register(outgoing=True, pattern="^.promote(?: |$)(.*)")
 async def promote(promt):
-    """ For .promote command, do promote targeted person """
+    """ For .promote command, promotes the replied/tagged person """
     # Get targeted chat
     chat = await promt.get_chat()
     # Grab admin status or creator in a chat
@@ -75,16 +75,17 @@ async def promote(promt):
         await promt.edit(NO_ADMIN)
         return
 
-    new_rights = ChatAdminRights(add_admins=admin.add_admins,
-                                 invite_users=admin.invite_users,
-                                 change_info=admin.change_info,
-                                 ban_users=admin.ban_users,
-                                 delete_messages=admin.delete_messages,
-                                 pin_messages=admin.pin_messages)
+    new_rights = ChatAdminRights(add_admins=False,
+                                 invite_users=True,
+                                 change_info=False,
+                                 ban_users=True,
+                                 delete_messages=True,
+                                 pin_messages=True)
 
     await promt.edit("`Promoting...`")
-
-    user = await get_user_from_event(promt)
+    user, rank = await get_user_from_event(promt)
+    if not rank:
+        rank = "admeme"  # Just in case.
     if user:
         pass
     else:
@@ -93,8 +94,8 @@ async def promote(promt):
     # Try to promote if current user is admin or creator
     try:
         await promt.client(
-            EditAdminRequest(promt.chat_id, user.id, new_rights, "Admin"))
-        await promt.edit("`Promoted Successfully!`")
+            EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
+        await promt.edit("`Promoted Successfully! Now gib Party`")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
