@@ -15,48 +15,48 @@ from userbot import (LOGGER, LOGGER_GROUP)
 from userbot.events import register
 from userbot import CMD_HELP
 
-@register(outgoing=True, pattern="^.promote$")
+@register(outgoing=True, pattern="^.promote(?: |$)(.*)", groups_only=True)
 async def promote(promt):
-    """ For .promote command, do promote targeted person """
-    if not promt.text[0].isalpha() \
-            and promt.text[0] not in ("/", "#", "@", "!"):
-        chats = await promt.get_chat()
-        admin = chats.admin_rights
-        creator = chats.creator
-        new_rights = ChatAdminRights(
-            add_admins=True,
-            invite_users=True,
-            change_info=True,
-            ban_users=True,
-            delete_messages=True,
-            pin_messages=True
-        )
+    """ For .promote command, promotes the replied/tagged person """
+    # Get targeted chat
+    chat = await promt.get_chat()
+    # Grab admin status or creator in a chat
+    admin = chat.admin_rights
+    creator = chat.creator
 
-        # Self explanatory
-        if not await promt.get_reply_message():
-            await promt.edit("`Give a reply message`")
-        elif not admin and creator:
-            rights = new_rights
-        elif not admin and not creator:
-            rights = None
-        await promt.edit("`Giving this user power using 6 Stone...`")
+    # If not admin and not creator, also return
+    if not admin and not creator:
+        await promt.edit(Ummm I'm not admin here)
+        return
 
-        # Try to promote if current user is admin or creator
-        try:
-            await promt.client(
-                EditAdminRequest(promt.chat_id,
-                                 (await promt.get_reply_message()).sender_id,
-                                 rights)
-            )
-            await promt.edit("**Power Increased!**")
+    new_rights = ChatAdminRights(add_admins=False,
+                                 invite_users=True,
+                                 change_info=False,
+                                 ban_users=True,
+                                 delete_messages=True,
+                                 pin_messages=True)
 
-        # If Telethon spit BadRequestError, assume
-        # we don't have Promote permission
-        except BadRequestError:
-            await promt.edit(
-                "`You Don't have sufficient permissions to parmod`"
-                )
-            return
+    await promt.edit("`Giving this user power using 6 Stone...`")
+    user, rank = await get_user_from_event(promt)
+    if not rank:
+        # Just in case.
+        rank = "GeyMin"
+    if user:
+        pass
+    else:
+        return
+
+    # Try to promote if current user is admin or creator
+    try:
+        await promt.client(
+            EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
+        await promt.edit("`Power Increased🔥`")
+
+    # If Telethon spit BadRequestError, assume
+    # we don't have Promote permission
+    except BadRequestError:
+        await promt.edit(i don't have full permission on this chat)
+        return
 
 
 @register(outgoing=True, pattern="^.demote$")
