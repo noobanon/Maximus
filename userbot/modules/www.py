@@ -79,7 +79,7 @@ async def pingme(e):
 
 CMD_HELP.update(
     {
-        "Others": """
+        "others": """
 『 **Ping/Speed** 』
   `.speed` -> Get Speed total of your server.
   `.ping` -> Get Ms Speed.
