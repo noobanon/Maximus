@@ -15,7 +15,8 @@ import pybase64
 from requests import get, post
 
 from userbot.events import register
-from userbot import LOGGER, LOGGER_GROUP
+from userbot import LOGGER, LOGGER_GROUP, bot
+from userbot import CMD_HELP
 
 DOGBIN_URL = "https://del.dog/"
 
@@ -146,9 +147,13 @@ async def randomise(e):
 
 
 @register(outgoing=True, pattern="^.alive$")
-async def amialive(e):
-    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("`Yo Master! I am alive 🙃`")
+async def alive(a):
+    reply_msg = f"**[Maximus](https://github.com/noobanon/Maximus)**\n"
+    reply_msg += f"`Status : Alive`\n"
+    reply_msg += f"`Made By ❤ Using` @TelethonUpdates\n"
+    photo = "https://telegra.ph/file/66cdc2a48c85419a03e93.jpg"
+    await a.delete()
+    await bot.send_file(a.chat.id, photo, caption=reply_msg)
 
 
 @register(outgoing=True, pattern="^.chatid$")
@@ -185,19 +190,19 @@ async def killdabot(e):
 @register(outgoing=True, pattern="^.support$")
 async def bot_support(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("Report bugs here: @binverse2")
+        await e.edit("Report bugs here: [Join](https://t.me/joinchat/QQl3l1TPa5d6pGnniqBJ_Q)")
 
 
 @register(outgoing=True, pattern="^.repo$")
 async def repo_is_here(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("**Here is the repo that I'm using** `https://github.com/Nitin1818/UserBotN`")
+        await e.edit(" **Take This Pro Repo** [REPO](https://github.com/noobanon/V.I.R.G.I.L)")
 
 
 @register(outgoing=True, pattern="^.supportchannel$")
 async def support_channel(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("t.me/seemoibio")
+        await e.edit("https://t.me/joinchat/QQl3l1TPa5d6pGnniqBJ_Q")
 
 
 @register(outgoing=True, pattern="^.userid$")

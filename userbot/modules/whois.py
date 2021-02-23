@@ -12,6 +12,7 @@ from telethon.tl.types import MessageEntityMentionName, User, UserFull
 from telethon.utils import get_input_location
 
 from userbot.events import register
+from userbot import CMD_HELP
 
 TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./")
 
@@ -64,7 +65,7 @@ async def who(event):
         photo = await event.client.download_profile_photo(
             user_id,
             TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
-            download_big=True
+            download_big=False
         )
 
     except TypeError:
@@ -87,15 +88,11 @@ async def who(event):
     else:
         user_bio = "This User has no About"
 
-    caption = "<b>USER INFO:</b> \n"
+    caption = "<b>INFORMATION:</b> \n"
     caption += f"First Name: {first_name} \n"
     caption += f"Last Name: {last_name} \n"
     caption += f"Username: {username} \n"
     caption += f"ID: <code>{user_id}</code> \n \n"
-    caption += f"Bio: \n<code>{user_bio}</code> \n \n"
-    caption += f"Common Chats with this user: {common_chat} \n"
-    caption += f"Permanent Link To Profile: "
-    caption += f"<a href=\"tg://user?id={user_id}\">{first_name}</a>"
 
     message_id_to_reply = event.message.reply_to_msg_id
 
@@ -115,3 +112,12 @@ async def who(event):
     if not photo.startswith("http"):
         os.remove(photo)
     await event.delete()
+
+CMD_HELP.update(
+    {
+        "information": """
+『 **Whois Help** 』
+  `.whois` -> Get information of target user.
+  """
+    }
+)

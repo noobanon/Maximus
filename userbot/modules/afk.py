@@ -10,7 +10,7 @@ from telethon.events import StopPropagation
 
 from userbot import (AFKREASON, COUNT_MSG, ISAFK, LOGGER, LOGGER_GROUP, USERS)
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(incoming=True)
 async def mention_afk(e):
@@ -182,3 +182,13 @@ async def type_afk_is_not_true(e):
         COUNT_MSG = 0
         USERS = {}
         AFKREASON = "No Reason"
+
+CMD_HELP.update(
+    {
+        "afk": """
+『 **AFK** 』
+  `afk [reason]` -> Provides a message saying that you are unavailable.
+  `unafk` -> Remove the AFK status.
+"""
+    }
+)

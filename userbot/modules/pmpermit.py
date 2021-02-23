@@ -8,10 +8,11 @@ from telethon.tl.functions.contacts import BlockRequest
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import User
 
 from userbot import COUNT_PM, LOGGER, LOGGER_GROUP, NOTIF_OFF, PM_AUTO_BAN
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(incoming=True)
 async def permitpm(e):
@@ -26,14 +27,15 @@ async def permitpm(e):
 
             if not apprv and e.text != \
                 ("`Bleep Blop! This is a Bot. Don't fret. \n\n`"
-                 "`My Master hasn't approved you to PM. Join` @Binverse2. \n\n"
-                 "`Please wait for my Master to look in, he would mostly approve PMs.`\n\n"
-                 "`As far as i know, he doesn't usually approve Retards.`"):
+                 "`My Master hasn't approved you to PM.`. \n\n"
+                 "`If You Are Hater then Maderchod Maa Chudao Bhosdike MaderHod`\n\n"
+                 "`Currently i'm offline you can get help in` @zonerschat join @mkzone For new Bins\n\n"
+                 "`If You Are One Of My Friends Kindly Wait Till Me Come Online.`"):
 
                 await e.reply(
                     "`Bleep Blop! This is a Bot. Don't fret. \n\n`"
-                    "`My Master hasn't approved you to PM. Join` @binverse2 \n\n"
-                    "`Please wait for my Master to look in, he would mostly approve PMs.`\n\n"
+                    "`If You Are Hater then Maderchod Maa Chudao Bhosdike MaderHod` \n\n"
+                    "`If You Are One Of My Friends Kindly Wait Till Me Come Online.`\n\n"
                     "`As far as i know, he doesn't usually approve Retards.`"
                 )
 
@@ -46,7 +48,7 @@ async def permitpm(e):
                 if COUNT_PM[e.chat_id] > 3:
                     await e.respond(
                         "`You were spamming my Master's PM, which I don't like.`"
-                        "`I'mma Report Spam.`"
+                        "`Reported Spam Of This MaderChod.`"
                     )
                     del COUNT_PM[e.chat_id]
                     await e.client(BlockRequest(e.chat_id))
@@ -65,6 +67,7 @@ async def permitpm(e):
                         )
 
 
+
 @register(outgoing=True, pattern="^.notifoff$")
 async def notifoff(e):
     global NOTIF_OFF
@@ -79,7 +82,7 @@ async def notifon(e):
     await e.edit("`Notifications unmuted!`")
 
 
-@register(outgoing=True, pattern="^.a$")
+@register(outgoing=True, pattern="^.pm$")
 async def approvepm(apprvpm):
     if not apprvpm.text[0].isalpha() and apprvpm.text[0] not in ("/", "#", "@", "!"):
         try:
@@ -100,16 +103,16 @@ async def approvepm(apprvpm):
             name0 = str(aname.first_name)
 
         await apprvpm.edit(
-            f"[{name0}](tg://user?id={apprvpm.chat_id}) `Approved to PM!`"
+            f"[{name0}](tg://user?id={apprvpm.chat_id}) `User Approved to PM!`"
             )
+        await apprvpm.delete()
 
         if LOGGER:
             await apprvpm.client.send_message(
                 LOGGER_GROUP,
                 f"[{name0}](tg://user?id={apprvpm.chat_id})"
-                " was approved to PM you.",
+                "Was Approved to PM you.",
             )
-
 
 @register(outgoing=True, pattern="^.b$")
 async def blockpm(block):
@@ -142,7 +145,7 @@ async def blockpm(block):
             await block.client.send_message(
                 LOGGER_GROUP,
                 f"[{name0}](tg://user?id={block.chat_id})"
-                " was blocc'd!.",
+                " was blocked.",
             )
 
 
@@ -165,3 +168,16 @@ async def unblockpm(unblock):
                 f"[{name0}](tg://user?id={unblock.chat_id})"
                 " was unblocc'd!.",
             )
+
+CMD_HELP.update(
+    {
+        "pm": """
+『 **PM OPTIONS** 』
+  `.ub`  -> Unblock User From Your PM.
+  `.notifon`  -> Notification Turned On.
+  `.notifoff -> Notification Turned Off.
+  `.pm` -> Allows a user to PM you.
+  `.b` -> Block a user to PM you.
+  """
+    }
+)

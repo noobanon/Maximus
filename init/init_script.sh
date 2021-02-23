@@ -2,7 +2,7 @@
 
 # Welcome Message
 welcome() {
-    echo "*****Welcome to baalajimaestro's userbot setup*****
+    echo "*****Welcome to noobanon's userbot setup*****
 This Guided Setup shall help you get your own userbot up and running.
 You might be asked for sudo password several number of times."
 }
@@ -22,7 +22,7 @@ packageinstall() {
 # Clone the required repo
 botclone() {
     cd ~
-    git clone https://github.com/baalajimaestro/Telegram-UserBot -b staging
+    git clone https://github.com/noobanon/Maximus -b staging
     cd Telegram-UserBot
 }
 
@@ -30,7 +30,7 @@ botclone() {
 reqinstall() {
     echo "***Installing Requirements***"
     sudo python3.7 -m pip install -r requirements.txt
-    curl -sLo bot https://raw.githubusercontent.com/baalajimaestro/Telegram-UserBot/modular/init/userbot
+    curl -sLo bot https://raw.githubusercontent.com/noobanon/Maximus/modular/init/userbot
     clear
 }
 DB = "n"

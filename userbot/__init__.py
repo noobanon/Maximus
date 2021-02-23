@@ -41,7 +41,7 @@ except NameError:
     API_HASH = os.environ.get("API_HASH", None)
     
     SUDO_USERS = os.environ.get("SUDO_USERS", None)
-    
+    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 
     LOGGER_GROUP = int(os.environ.get("LOGGER_GROUP", "0"))
 
@@ -102,6 +102,7 @@ SPAM = False
 WIDE_MAP = dict((i, i + 0xFEE0) for i in range(0x21, 0x7F))
 WIDE_MAP[0x20] = 0x3000
 COUNT_PM = {}
+CMD_HELP = {}
 ISAFK = False
 ENABLE_KILLME = True
 SNIPE_ID = 0

@@ -12,7 +12,7 @@ from telethon.errors import rpcbaseerrors
 
 from userbot import LOGGER, LOGGER_GROUP
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(outgoing=True, pattern="^.purge$")
 async def fastpurger(purg):
@@ -136,3 +136,16 @@ async def selfdestruct(destroy):
         await smsg.delete()
         if LOGGER:
             await destroy.client.send_message(LOGGER_GROUP, "sd query done successfully")
+
+CMD_HELP.update(
+    {
+        "purge": """
+『 **Purges/Delete** 』
+  `.purge` -> Delete all replied Messages Or Chat.
+  `.purgeme` -> Delete only your sended all message.
+  `.sd` -> set self destroy message time
+  `.delmsg` -> Deletes single message.
+  `.editme -> edit your messages.
+"""
+    }
+)

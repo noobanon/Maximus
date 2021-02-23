@@ -9,55 +9,99 @@ from telethon.errors import BadRequestError
 from telethon.errors.rpcerrorlist import UserIdInvalidError
 from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
 
-from telethon.tl.types import ChatAdminRights, ChatBannedRights
+from telethon.tl.types import ChatAdminRights, ChatBannedRights, MessageEntityMentionName, MessageMediaPhoto
 
 from userbot import (LOGGER, LOGGER_GROUP)
 from userbot.events import register
+from userbot import CMD_HELP
 
+PP_TOO_SMOL = "`The image is too small`"
+PP_ERROR = "`Failure while processing image`"
+NO_ADMIN = "`You aren't an admin!`"
+NO_PERM = "`You don't have sufficient permissions!`"
+NO_SQL = "`Database connections failing!`"
 
-@register(outgoing=True, pattern="^.promote$")
-async def promote(promt):
-    """ For .promote command, do promote targeted person """
-    if not promt.text[0].isalpha() \
-            and promt.text[0] not in ("/", "#", "@", "!"):
-        chats = await promt.get_chat()
-        admin = chats.admin_rights
-        creator = chats.creator
-        new_rights = ChatAdminRights(
-            add_admins=True,
-            invite_users=True,
-            change_info=True,
-            ban_users=True,
-            delete_messages=True,
-            pin_messages=True
-        )
+CHAT_PP_CHANGED = "`Chat Picture Changed`"
+CHAT_PP_ERROR = "`Some issue with updating the pic,`" \
+                "`maybe you aren't an admin,`" \
+                "`or don't have the desired rights.`"
+INVALID_MEDIA = "`Invalid Extension`"
 
-        # Self explanatory
-        if not await promt.get_reply_message():
-            await promt.edit("`Give a reply message`")
-        elif not admin and creator:
-            rights = new_rights
-        elif not admin and not creator:
-            rights = None
-        await promt.edit("`Promoting...`")
+async def get_user_from_event(event):
+    """ Get the user from argument or replied message. """
+    args = event.pattern_match.group(1).split(' ', 1)
+    extra = None
+    if event.reply_to_msg_id and not len(args) == 2:
+        previous_message = await event.get_reply_message()
+        user_obj = await event.client.get_entity(previous_message.from_id)
+        extra = event.pattern_match.group(1)
+    elif args:
+        user = args[0]
+        if len(args) == 2:
+            extra = args[1]
 
-        # Try to promote if current user is admin or creator
+        if user.isnumeric():
+            user = int(user)
+
+        if not user:
+            return await event.reply("`Pass the user's username, id or reply!`")
+
+        if event.message.entities is not None:
+            probable_user_mention_entity = event.message.entities[0]
+
+            if isinstance(probable_user_mention_entity,
+                          MessageEntityMentionName):
+                user_id = probable_user_mention_entity.user_id
+                user_obj = await event.client.get_entity(user_id)
+                return user_obj
         try:
-            await promt.client(
-                EditAdminRequest(promt.chat_id,
-                                 (await promt.get_reply_message()).sender_id,
-                                 rights, "admin")
-            )
-            await promt.edit("**Promoted Successfully!**")
+            user_obj = await event.client.get_entity(user)
+        except (TypeError, ValueError) as err:
+            return await event.reply(str(err))
 
-        # If Telethon spit BadRequestError, assume
-        # we don't have Promote permission
-        except BadRequestError:
-            await promt.edit(
-                "`You Don't have sufficient permissions to parmod`"
-                )
-            return
+    return user_obj, extra
 
+@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
+async def promote(promt):
+    """ For .promote command, promotes the replied/tagged person """
+    # Get targeted chat
+    chat = await promt.get_chat()
+    # Grab admin status or creator in a chat
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, also return
+    if not admin and not creator:
+        await promt.edit(NO_ADMIN)
+        return
+
+    new_rights = ChatAdminRights(add_admins=False,
+                                 invite_users=True,
+                                 change_info=False,
+                                 ban_users=True,
+                                 delete_messages=True,
+                                 pin_messages=True)
+
+    await promt.edit("Giving this user power using 6 Stone...")
+    user, rank = await get_user_from_event(promt)
+    if not rank:
+        rank = "Geymin"  # Just in case.
+    if user:
+        pass
+    else:
+        return
+
+    # Try to promote if current user is admin or creator
+    try:
+        await promt.client(
+            EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
+        await promt.edit("**Power increased**")
+
+    # If Telethon spit BadRequestError, assume
+    # we don't have Promote permission
+    except BadRequestError:
+        await promt.edit(NO_PERM)
+        return
 
 @register(outgoing=True, pattern="^.demote$")
 async def demote(dmod):
@@ -79,7 +123,7 @@ async def demote(dmod):
             return
 
         # If passing, declare that we're going to demote
-        await dmod.edit("`Demoting...`")
+        await dmod.edit("Wiping this user from admin using infinity stone")
 
         # New rights after demotion
         newrights = ChatAdminRights(
@@ -105,7 +149,7 @@ async def demote(dmod):
                 "`You Don't have sufficient permissions to demhott`"
                 )
             return
-        await dmod.edit("**Demoted Successfully!**")
+        await dmod.edit("**Wiped Successfully!**")
 
 
 @register(outgoing=True, pattern="^.ban$")
@@ -331,3 +375,24 @@ async def gspider(gspdr):
                 str((await gspdr.get_reply_message()).sender_id)
                 + " was muted.",
             )
+
+CMD_HELP.update(
+    {
+        "admin": """
+• **Admins Help** •
+  `promote` -> Promote a user by bot.
+  `demote` -> Demote user by bot.
+  `ban` -> Bans user indefinitely.
+  `unban` -> Unbans the user.
+  `mute` -> Mutes user indefinitely.
+  `unmute` -> Unmutes the user.
+  `kick` -> Kicks the user out of the group.
+  `gmute` -> Doesn't lets a user speak(even admins).
+  `ungmute` -> Inverse of what gmute does.
+  `pin` -> pins a message.
+  `del` -> delete a message.
+  `purge` -> purge message(s)
+  `adminlist` -> Get adminlist in chat.
+"""
+    }
+)

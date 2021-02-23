@@ -16,7 +16,7 @@ from hachoir.parser import createParser
 from PIL import Image
 from telethon.errors import MessageNotModifiedError
 from telethon.tl.types import DocumentAttributeVideo
-
+from userbot import CMD_HELP
 from userbot import LOGS
 from userbot.events import register
 
@@ -325,3 +325,13 @@ async def _(e):
                 await e.edit(str(e))
         else:
             await e.edit("404: File Not Found")
+
+CMD_HELP.update(
+    {
+        "downloads": """
+『 **Download and Uploads** 』
+  `.download`  -> Download Files to local directory.
+  `.upload` -> Upload files into telegram servers.
+  """
+    }
+)
