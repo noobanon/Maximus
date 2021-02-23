@@ -12,8 +12,8 @@ from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
 from telethon.tl.types import ChatAdminRights, ChatBannedRights
 
 from userbot import (LOGGER, LOGGER_GROUP)
-from userbot.events import register, CMD_HELP
-
+from userbot.events import register
+from userbot import CMD_HELP
 
 @register(outgoing=True, pattern="^.promote$")
 async def promote(promt):
