@@ -378,7 +378,7 @@ async def gspider(gspdr):
 
 CMD_HELP.update(
     {
-        "admin": """
+        "•Admin Help• promote, demote, ban, unban, mute, gmute, ungmute, pin, del, purge": """
 • **Admins Help** •
   `promote` -> Promote a user by bot.
   `demote` -> Demote user by bot.
