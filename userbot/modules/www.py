@@ -67,7 +67,7 @@ async def neardc(e):
     )
 
 
-@register(outgoing=True, pattern="^.pingme$")
+@register(outgoing=True, pattern="^.ping$")
 async def pingme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         start = datetime.now()
@@ -75,3 +75,13 @@ async def pingme(e):
         end = datetime.now()
         ms = (end - start).microseconds / 1000
         await e.edit("Pong!\n%sms" % (ms))
+
+CMD_HELP.update(
+    {
+        "Others": """
+『 **Ping/Speed** 』
+  `.speed` -> Get Speed total of your server.
+  `.ping` -> Get Ms Speed.
+"""
+    }
+)
