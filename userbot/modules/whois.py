@@ -107,7 +107,7 @@ async def who(event):
         #force_document=False,
         #reply_to=message_id_to_reply,
         #parse_mode="html"
-    )
+    #)
 
     #if not photo.startswith("http"):
         #os.remove(photo)
