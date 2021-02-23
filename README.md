@@ -1,17 +1,13 @@
-[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Nitin1818/UserbotN/?ref=repository-badge)
+[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/noobanon/Maximus?ref=repository-badge)
 
 
-[![CodeFactor](https://www.codefactor.io/repository/github/nitin1818/userbotn/badge)](https://www.codefactor.io/repository/github/nitin1818/userbotn)
+[![CodeFactor](https://www.codefactor.io/repository/github/noobanon/Maximus/badge)](https://www.codefactor.io/repository/github/noobanon/Maximus)
 
 ---
 # Telegram-UserBot
 
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/noobanon/V.I.R.G.I.L"> <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" /></a></p>
+<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/noobanon/Maximus"> <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" /></a></p>
 
- #### To track Semaphore builds, see the commits section. Since I use Semaphore 2.0, it is not possible to track the progress fully, or put a badge here. Ignore Travis CI for PRs.
-
-
-### If the CI builds pass, but you still get syntax errors when running locally it's most probably not a problem with the source but with your version of python
 
 
 ```diff
@@ -59,7 +55,7 @@ If you find any bugs or have any suggestions then don't hesitate to contact me i
 
 ### Before you start:
 
-Clone this repo `git clone https://github.com/baalajimaestro/Telegram-UserBot`
+Clone this repo `git clone https://github.com/noobanon/Maximus`
 
 Pip install all the requirements, `pip3 install -r requirements.txt`
 
@@ -127,7 +123,6 @@ An example `config.env` file could be:
     API_HASH='4588acb1863ead924119c885dfffba2'
     LOGGER_GROUP=-1001200493567
     LOGGER=True    #Incase you want to turn off logging, put this to false
-    TRT_ENABLE=False
     PM_AUTO_BAN=True
     CONSOLE_LOGGER_VERBOSE=True
     SCREEN_SHOT_LAYER_ACCESS_KEY="get from screenshot layer website google it "
