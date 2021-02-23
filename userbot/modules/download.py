@@ -325,3 +325,13 @@ async def _(e):
                 await e.edit(str(e))
         else:
             await e.edit("404: File Not Found")
+
+CMD_HELP.update(
+    {
+        "Downloads": """
+『 **Download and Uploads** 』
+  `.download`  -> Download Files to local directory.
+  `.upload` -> Upload files into telegram servers.
+  """
+    }
+)
