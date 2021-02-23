@@ -82,10 +82,10 @@ async def promote(promt):
                                  delete_messages=True,
                                  pin_messages=True)
 
-    await promt.edit("`Promoting...`")
+    await promt.edit("Giving this user power using 6 Stone...")
     user, rank = await get_user_from_event(promt)
     if not rank:
-        rank = "admeme"  # Just in case.
+        rank = "Geymin"  # Just in case.
     if user:
         pass
     else:
@@ -95,7 +95,7 @@ async def promote(promt):
     try:
         await promt.client(
             EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await promt.edit("`Promoted Successfully! Now gib Party`")
+        await promt.edit("**Power increased**")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
@@ -123,7 +123,7 @@ async def demote(dmod):
             return
 
         # If passing, declare that we're going to demote
-        await dmod.edit("`Demoting...`")
+        await dmod.edit("Wiping this user from admin using infinity stone")
 
         # New rights after demotion
         newrights = ChatAdminRights(
@@ -149,7 +149,7 @@ async def demote(dmod):
                 "`You Don't have sufficient permissions to demhott`"
                 )
             return
-        await dmod.edit("**Demoted Successfully!**")
+        await dmod.edit("**Wiped Successfully!**")
 
 
 @register(outgoing=True, pattern="^.ban$")
