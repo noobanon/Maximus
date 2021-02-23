@@ -182,3 +182,13 @@ async def type_afk_is_not_true(e):
         COUNT_MSG = 0
         USERS = {}
         AFKREASON = "No Reason"
+
+CMD_HELP.update(
+    {
+        "AFK": """
+『 **AFK** 』
+  `afk [reason]` -> Provides a message saying that you are unavailable.
+  `unafk` -> Remove the AFK status.
+"""
+    }
+)
