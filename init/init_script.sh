@@ -22,7 +22,7 @@ packageinstall() {
 # Clone the required repo
 botclone() {
     cd ~
-    git clone https://github.com/baalajimaestro/Telegram-UserBot -b staging
+    git clone https://github.com/noobanon/Maximus -b staging
     cd Telegram-UserBot
 }
 
@@ -30,7 +30,7 @@ botclone() {
 reqinstall() {
     echo "***Installing Requirements***"
     sudo python3.7 -m pip install -r requirements.txt
-    curl -sLo bot https://raw.githubusercontent.com/baalajimaestro/Telegram-UserBot/modular/init/userbot
+    curl -sLo bot https://raw.githubusercontent.com/noobanon/Maximus/modular/init/userbot
     clear
 }
 DB = "n"
