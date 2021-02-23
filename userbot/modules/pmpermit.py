@@ -171,7 +171,7 @@ async def unblockpm(unblock):
 
 CMD_HELP.update(
     {
-        "PM": """
+        "pm": """
 『 **PM OPTIONS** 』
   `.ub`  -> Unblock User From Your PM.
   `.notifon`  -> Notification Turned On.
