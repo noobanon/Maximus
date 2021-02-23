@@ -185,7 +185,7 @@ async def type_afk_is_not_true(e):
 
 CMD_HELP.update(
     {
-        "AFK": """
+        "afk": """
 『 **AFK** 』
   `afk [reason]` -> Provides a message saying that you are unavailable.
   `unafk` -> Remove the AFK status.
