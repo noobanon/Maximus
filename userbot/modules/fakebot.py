@@ -71,10 +71,12 @@ async def pembohong(fake):
           else: 
              await fake.edit(f"{response.message.message}")
 
-CMD_HELP.update({
-        "mata mata": 
-        ".sg \
-          \nUsage: Steal ur or friend name.\
-          \n\n.fakemail\
-          \nUsage: Fake an email to ur friends or someone."
-    })
+CMD_HELP.update(
+    {
+        "Sangmata": """
+『 **Fakemail/Sangmata** 』
+  `.sg` -> Reply with anyuser to get information.
+  `.fakemail -> Get Fake Email.
+  """
+    }
+)
