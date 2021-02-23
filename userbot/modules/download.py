@@ -328,7 +328,7 @@ async def _(e):
 
 CMD_HELP.update(
     {
-        "Downloads": """
+        "downloads": """
 『 **Download and Uploads** 』
   `.download`  -> Download Files to local directory.
   `.upload` -> Upload files into telegram servers.
