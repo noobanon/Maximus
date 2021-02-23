@@ -63,7 +63,7 @@ async def who(event):
 
     #try:
         #photo = await event.client.download_profile_photo(
-            user_id,
+            #user_id,
             #TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
             #download_big=False
         )
@@ -100,18 +100,18 @@ async def who(event):
         message_id_to_reply = event.message.id
 
     #await event.client.send_file(
-        event.chat_id,
-        photo,
-        caption=caption,
-        link_preview=False,
-        force_document=False,
-        reply_to=message_id_to_reply,
-        parse_mode="html"
+        #event.chat_id,
+        #photo,
+        #caption=caption,
+        #link_preview=False,
+        #force_document=False,
+        #reply_to=message_id_to_reply,
+        #parse_mode="html"
     )
 
     #if not photo.startswith("http"):
-        os.remove(photo)
-    await event.delete()
+        #os.remove(photo)
+    #await event.delete()
 
 CMD_HELP.update(
     {
