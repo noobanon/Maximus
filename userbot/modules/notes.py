@@ -6,7 +6,7 @@
 
 from userbot import LOGGER, LOGGER_GROUP, bot
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(outgoing=True, pattern="^\.notes$")
 async def notes_active(svd):
