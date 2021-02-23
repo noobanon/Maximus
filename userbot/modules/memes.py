@@ -430,3 +430,83 @@ async def typewriter(typew):
             await asyncio.sleep(sleep_time)
             await typew.edit(old_text)
             await asyncio.sleep(sleep_time)
+
+CMD_HELP.update({
+    "Memes": ".cowsay\
+\nUsage: cow which says things.\
+\n\n.milksay\
+\nUsage: Weird Milk that can speak\
+\n\n:/\
+\nUsage: Check yourself ;)\
+\n\n-_-\
+\nUsage: Ok...\
+\n\n;_;\
+\nUsage: Like `-_-` but crying.\
+\n\n.cp\
+\nUsage: Copypasta the famous meme\
+\n\n.vapor\
+\nUsage: Vaporize everything!\
+\n\n.str\
+\nUsage: Stretch it.\
+\n\n.10iq\
+\nUsage: You retard !!\
+\n\n.zal\
+\nUsage: Invoke the feeling of chaos.\
+\n\n.oof\
+\nUsage: Ooooof\
+\n\n.moon\
+\nUsage: kensar moon animation.\
+\n\n.clock\
+\nUsage: kensar clock animation.\
+\n\n.earth\
+\nUsage: kensar earth animation.\
+\n\n.hi\
+\nUsage: Greet everyone!\
+\n\n.coinflip <heads/tails>\
+\nUsage: Flip a coin !!\
+\n\n.owo\
+\nUsage: UwU\
+\n\n.react\
+\nUsage: Make your userbot react to everything.\
+\n\n.slap\
+\nUsage: reply to slap them with random objects !!\
+\n\n.cry\
+\nUsage: y u du dis, i cri.\
+\n\n.shg\
+\nUsage: Shrug at it !!\
+\n\n.runs\
+\nUsage: Run, run, RUNNN! [`.disable runs`: disable | `.enable runs`: enable]\
+\n\n.metoo\
+\nUsage: Haha yes\
+\n\n.mock\
+\nUsage: Do it and find the real fun.\
+\n\n.clap\
+\nUsage: Praise people!\
+\n\n.f <emoji/character>\
+\nUsage: Pay Respects.\
+\n\n.bt\
+\nUsage: Believe me, you will find this useful.\
+\n\n.smk <text/reply>\
+\nUsage: A shit module for ツ , who cares.\
+\n\n.type\
+\nUsage: Just a small command to make your keyboard become a typewriter!\
+\n\n.lfy <query>\
+\nUsage: Let me Google that for you real quick !!\
+\n\n.decide\
+\nUsage: Make a quick decision.\
+\n\n.abusehard\
+\nUsage: You already got that! Ain't?.\
+\n\n.chu\
+\nUsage: Incase, the person infront of you is....\
+\n\n.fuk\
+\nUsage: The onlu word that can be used fucking everywhere.\
+\n\n.thanos\
+\nUsage: Try and then Snap.\
+\n\n.noob\
+\nUsage: Whadya want to know? Are you a NOOB?\
+\n\n.pro\
+\nUsage: If you think you're pro, try this.\
+\n\n.abuse\
+\nUsage: Protects you from unwanted peeps.\
+\n\n\nThanks to 🅱️ottom🅱️ext🅱️ot (@NotAMemeBot) for some of these."
+})
