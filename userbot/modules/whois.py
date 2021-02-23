@@ -115,7 +115,7 @@ async def who(event):
 
 CMD_HELP.update(
     {
-        "Information": """
+        "information": """
 『 **Whois Help** 』
   `.whois` -> Get information of target user.
   """
