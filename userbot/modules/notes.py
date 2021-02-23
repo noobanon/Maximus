@@ -91,3 +91,15 @@ async def purge_notes(prg):
             await prg.client.send_message(
                 LOGGER_GROUP, "I cleaned all notes at " + str(prg.chat_id)
             )
+
+CMD_HELP.update(
+    {
+        "Notes": """
+『 **Notes** 』
+  `save` -> Save a new note. Must be used in reply with one parameter (note name).
+  `get` -> Gets the note specified.
+  `clear` -> Deletes a note, specified by note name.
+  `notes` -> List the saved notes.
+"""
+    }
+)
