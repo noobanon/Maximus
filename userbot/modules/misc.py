@@ -149,8 +149,8 @@ async def randomise(e):
 async def alive(a):
     reply_msg = f"**[MR.ANON](https://github.com/noobanon/Dante)**\n"
     reply_msg += f"Status : Alive`\n"
-    reply_msg += f"Made By @Telethon`\n"
-    photo = "https://telegra.ph/file/fc9ff24cf520cb99afce5.jpg"
+    reply_msg += f"Made By ❤ With @Telethon`\n"
+    photo = "https://telegra.ph/file/828d4ae9568905fcad0af.jpg"
     await a.delete()
     await bot.send_file(a.chat.id, photo, caption=reply_msg)
 
