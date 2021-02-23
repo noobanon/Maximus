@@ -10,7 +10,7 @@ from telethon.events import StopPropagation
 
 from userbot import (AFKREASON, COUNT_MSG, ISAFK, LOGGER, LOGGER_GROUP, USERS)
 from userbot.events import register
-
+from userbot import CMD_HELP
 
 @register(incoming=True)
 async def mention_afk(e):
