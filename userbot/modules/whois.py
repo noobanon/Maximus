@@ -61,15 +61,15 @@ async def who(event):
     username = replied_user.user.username
     user_bio = replied_user.about
 
-    try:
-        photo = await event.client.download_profile_photo(
+    #try:
+        #photo = await event.client.download_profile_photo(
             user_id,
-            TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
-            download_big=False
+            #TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
+            #download_big=False
         )
 
-    except TypeError:
-        photo = "https://thumbs.dreamstime.com/b/no-user-profile-picture-24185395.jpg"
+    #except TypeError:
+        #photo = "https://thumbs.dreamstime.com/b/no-user-profile-picture-24185395.jpg"
 
     if first_name:
         first_name = first_name.replace("\u2060", "")
@@ -99,7 +99,7 @@ async def who(event):
     if not message_id_to_reply:
         message_id_to_reply = event.message.id
 
-    await event.client.send_file(
+    #await event.client.send_file(
         event.chat_id,
         photo,
         caption=caption,
@@ -109,7 +109,7 @@ async def who(event):
         parse_mode="html"
     )
 
-    if not photo.startswith("http"):
+    #if not photo.startswith("http"):
         os.remove(photo)
     await event.delete()
 
