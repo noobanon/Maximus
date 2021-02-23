@@ -2,7 +2,7 @@
 
 # Welcome Message
 welcome() {
-    echo "*****Welcome to baalajimaestro's userbot setup*****
+    echo "*****Welcome to noobanon's userbot setup*****
 This Guided Setup shall help you get your own userbot up and running.
 You might be asked for sudo password several number of times."
 }
