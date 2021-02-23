@@ -12,7 +12,7 @@ from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
 from telethon.tl.types import ChatAdminRights, ChatBannedRights
 
 from userbot import (LOGGER, LOGGER_GROUP)
-from userbot.events import register
+from userbot.events import register, CMD_HELP
 
 
 @register(outgoing=True, pattern="^.promote$")
@@ -39,7 +39,7 @@ async def promote(promt):
             rights = new_rights
         elif not admin and not creator:
             rights = None
-        await promt.edit("`Promoting...`")
+        await promt.edit("`Giving this user power using 6 Stone...`")
 
         # Try to promote if current user is admin or creator
         try:
@@ -48,7 +48,7 @@ async def promote(promt):
                                  (await promt.get_reply_message()).sender_id,
                                  new_rights)
             )
-            await promt.edit("**Promoted Successfully!**")
+            await promt.edit("**Power Increased!**")
 
         # If Telethon spit BadRequestError, assume
         # we don't have Promote permission
@@ -331,3 +331,23 @@ async def gspider(gspdr):
                 str((await gspdr.get_reply_message()).sender_id)
                 + " was muted.",
             )
+
+CMD_HELP.update(
+    {
+        "admin": """
+• **Admins Help** •
+  `promote` -> Promote a user by bot.
+  `demote` -> Demote user by bot.
+  `ban` -> Bans user indefinitely.
+  `unban` -> Unbans the user.
+  `mute` -> Mutes user indefinitely.
+  `unmute` -> Unmutes the user.
+  `kick` -> Kicks the user out of the group.
+  `gmute` -> Doesn't lets a user speak(even admins).
+  `ungmute` -> Inverse of what gmute does.
+  `pin` -> pins a message.
+  `del` -> delete a message.
+  `purge` -> purge message(s)
+"""
+    }
+)
