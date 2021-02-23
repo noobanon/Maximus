@@ -392,6 +392,7 @@ CMD_HELP.update(
   `pin` -> pins a message.
   `del` -> delete a message.
   `purge` -> purge message(s)
+  `adminlist` -> Get adminlist in chat.
 """
     }
 )
