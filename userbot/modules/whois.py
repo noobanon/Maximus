@@ -99,9 +99,9 @@ async def who(event):
     if not message_id_to_reply:
         message_id_to_reply = event.message.id
 
-    await event.client.send_message(
+    await event.client.send_file(
         event.chat_id,
-        #photo,
+        photo,
         caption=caption,
         link_preview=False,
         force_document=False,
