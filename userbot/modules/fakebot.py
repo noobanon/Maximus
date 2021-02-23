@@ -73,7 +73,7 @@ async def pembohong(fake):
 
 CMD_HELP.update(
     {
-        "Sangmata": """
+        "sangmata": """
 『 **Fakemail/Sangmata** 』
   `.sg` -> Reply with anyuser to get information.
   `.fakemail -> Get Fake Email.
