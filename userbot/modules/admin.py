@@ -55,7 +55,7 @@ async def promote(promt):
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
     except BadRequestError:
-        await promt.edit(i don't have full permission on this chat)
+        await promt.edit("i don't have full permission on this chat")
         return
 
 
