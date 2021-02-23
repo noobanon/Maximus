@@ -21,17 +21,7 @@
 - /
 ```
 
-A modular telegram Python UserBot running on python3 with an sqlalchemy database.
-
-Started up as a simple bot, which helps with deleting messages and other stuffs when I didn't possess a smartphone(selecting each message indeed difficult) with a ton of meme features kanged from [SkittBot](https://github.com/skittles9823/SkittBot), it has evolved, becoming extremely modular and simple to use.
-
-
-If you just want to stay in the loop about new features or
-announcements you can join the [news channel](https://t.me/maestro_userbot_channel).
-
-If you find any bugs or have any suggestions then don't hesitate to contact me in [my support group](https://t.me/userbot_support).
-
-- This README is not guaranteed to always be up to date, refer to the [support channel](https://t.me/maestro_userbot_channel) for the latest informations.
+A modular telegram Python UserBot running on python3 Telethon Client with an sqlalchemy database.
 
 ## Getting your own userbot up and running:
 
