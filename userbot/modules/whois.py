@@ -66,7 +66,7 @@ async def who(event):
             #user_id,
             #TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
             #download_big=False
-        )
+        #)
 
     #except TypeError:
         #photo = "https://thumbs.dreamstime.com/b/no-user-profile-picture-24185395.jpg"
