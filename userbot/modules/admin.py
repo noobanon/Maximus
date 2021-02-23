@@ -46,7 +46,7 @@ async def promote(promt):
             await promt.client(
                 EditAdminRequest(promt.chat_id,
                                  (await promt.get_reply_message()).sender_id,
-                                 rights, "admin")
+                                 new_rights)
             )
             await promt.edit("**Promoted Successfully!**")
 
