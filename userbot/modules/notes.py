@@ -94,7 +94,7 @@ async def purge_notes(prg):
 
 CMD_HELP.update(
     {
-        "Notes": """
+        "notes": """
 『 **Notes** 』
   `save` -> Save a new note. Must be used in reply with one parameter (note name).
   `get` -> Gets the note specified.
