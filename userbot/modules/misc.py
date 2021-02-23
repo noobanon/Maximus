@@ -151,7 +151,7 @@ async def alive(a):
     reply_msg += f"Status : Alive`\n"
     reply_msg += f"Made By @Telethon`\n"
     photo = "https://telegra.ph/file/fc9ff24cf520cb99afce5.jpg"
-    await m.delete()
+    await a.delete()
     await app.send_photo(a.chat.id, photo, caption=reply_msg)
 
 
