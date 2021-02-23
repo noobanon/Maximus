@@ -9,7 +9,7 @@ from telethon.errors import BadRequestError
 from telethon.errors.rpcerrorlist import UserIdInvalidError
 from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
 
-from telethon.tl.types import ChatAdminRights, ChatBannedRights, MessageEntityMentionName, MessageMediaPhoto,
+from telethon.tl.types import ChatAdminRights, ChatBannedRights, MessageEntityMentionName, MessageMediaPhoto
 
 from userbot import (LOGGER, LOGGER_GROUP)
 from userbot.events import register
