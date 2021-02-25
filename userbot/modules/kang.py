@@ -149,7 +149,7 @@ async def kang(args):
                         await conv.send_message(cmd)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
-                        await borg.send_read_acknowledge(conv.chat_id)
+                        await bot.send_read_acknowledge(conv.chat_id)
                         await conv.send_message(packnick)
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
@@ -163,7 +163,7 @@ async def kang(args):
                         await conv.get_response()
                         await conv.send_message(emoji)
                         # Ensure user doesn't get spamming notifications
-                        await borg.send_read_acknowledge(conv.chat_id)
+                        await bot.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message("/publish")
                         if is_anim:
