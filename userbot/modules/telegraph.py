@@ -10,11 +10,11 @@ telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
-if Config.LOGGER_GROUP is None:
+if LOGGER_GROUP is None:
     LOGGER = False
 else:
     LOGGER = True
-    LOGGER_GROUP = Config.LOGGER_GROUP
+    LOGGER_GROUP = LOGGER_GROUP
 
 TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./")
 
