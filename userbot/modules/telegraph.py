@@ -19,7 +19,7 @@ else:
 
 TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./")
 
-@register(outgoing=True, pattern="telegraph (media|text) ?(.*)"))
+@register(outgoing=True, pattern="telegraph (media|text) ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
