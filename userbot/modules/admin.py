@@ -376,7 +376,7 @@ async def gspider(gspdr):
                 + " was muted.",
             )
 
-@register(outgoing=True, pattern="^.kick(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^.kick(?: |$)(.*)")
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
     # Admin or creator check
@@ -417,7 +417,7 @@ async def kick(usr):
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n")
 
-@register(outgoing=True, pattern="^.pin(?: |$)(.*)", groups_only=True)
+@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
     # Admin or creator check
