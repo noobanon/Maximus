@@ -8,7 +8,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 from userbot import (LOGGER, LOGGER_GROUP)
 telegraph = Telegraph()
-r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
+r = telegraph.create_account(short_name=TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 if LOGGER_GROUP is None:
