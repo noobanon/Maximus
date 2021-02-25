@@ -114,6 +114,37 @@ async def approvepm(apprvpm):
                 "Was Approved to PM you.",
             )
 
+@register(outgoing=True, pattern="^.dis$")
+async def disapprovepm(disapprvpm):
+    if not disapprvpm.text[0].isalpha() and disapprvpm.text[0] not in ("/", "#", "@", "!"):
+        try:
+            from userbot.modules.sql_helper.pm_permit_sql import dissprove
+        except:
+            await disapprvpm.edit("`Running on Non-SQL mode!`")
+            return
+
+        if disapprvpm.reply_to_msg_id:
+            reply = await disapprvpm.get_reply_message()
+            replied_user = await disapprvpm.client(GetFullUserRequest(reply.from_id))
+            aname = replied_user.user.id
+            name0 = str(replied_user.user.first_name)
+            dissprove(replied_user.user.id)
+        else:
+            dissprove(disapprvpm.chat_id)
+            aname = await disapprvpm.client.get_entity(disapprvpm.chat_id)
+            name0 = str(aname.first_name)
+
+        await disapprvpm.edit(
+            f"[{name0}](tg://user?id={disapprvpm.chat_id}) `Nub Nimba disapproved to PM KEK!`"
+            )
+
+        if LOGGER_GROUP:
+            await disapprvpm.client.send_message(
+                LOGGER_GROUP,
+                f"[{name0}](tg://user?id={disapprvpm.chat_id})"
+                " was disapproved to PM you.",
+            )
+
 @register(outgoing=True, pattern="^.b$")
 async def blockpm(block):
     if not block.text[0].isalpha() and block.text[0] not in ("/", "#", "@", "!"):
