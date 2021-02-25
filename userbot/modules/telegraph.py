@@ -5,6 +5,7 @@ from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
 
 from userbot import CMD_HELP
+from userbot.events import register
 from userbot import (LOGGER, LOGGER_GROUP)
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
@@ -24,7 +25,7 @@ async def _(event):
         return
     if not os.path.isdir(TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TMP_DOWNLOAD_DIRECTORY)
-    if BOTLOG:
+    if LOGGER_GROUP:
         try:
             await bot.send_message(
                 LOGGER_GROUP,
