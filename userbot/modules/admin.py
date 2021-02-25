@@ -8,7 +8,7 @@ from time import sleep
 from telethon.errors import BadRequestError
 from telethon.errors.rpcerrorlist import UserIdInvalidError
 from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
-
+from telethon.tl.functions.messages import UpdatePinnedMessageRequest
 from telethon.tl.types import ChatAdminRights, ChatBannedRights, MessageEntityMentionName, MessageMediaPhoto
 
 from userbot import (LOGGER, LOGGER_GROUP)
