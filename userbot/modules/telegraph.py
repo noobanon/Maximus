@@ -6,7 +6,7 @@ from telegraph import Telegraph, exceptions, upload_file
 
 from userbot import CMD_HELP
 from userbot.events import register
-from userbot import (LOGGER, LOGGER_GROUP)
+from userbot import (LOGGER, LOGGER_GROUP, TELEGRAPH_SHORT_NAME)
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
