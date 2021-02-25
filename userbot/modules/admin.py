@@ -376,6 +376,92 @@ async def gspider(gspdr):
                 + " was muted.",
             )
 
+@register(outgoing=True, pattern="^.kick(?: |$)(.*)", groups_only=True)
+async def kick(usr):
+    """ For .kick command, kicks the replied/tagged person from the group. """
+    # Admin or creator check
+    chat = await usr.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await usr.edit(NO_ADMIN)
+        return
+
+    user, reason = await get_user_from_event(usr)
+    if not user:
+        await usr.edit("`Couldn't fetch user.`")
+        return
+
+    await usr.edit("`Kicking...`")
+
+    try:
+        await usr.client.kick_participant(usr.chat_id, user.id)
+        await sleep(.5)
+    except Exception as e:
+        await usr.edit(NO_PERM)
+        return
+
+    if reason:
+        await usr.edit(
+            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
+        )
+    else:
+        await usr.edit(
+            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+
+    if LOGGER_GROUP:
+        await usr.client.send_message(
+            LOGGER_GROUP, "#KICK\n"
+            f"USER: [{user.first_name}](tg://user?id={user.id})\n"
+            f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n")
+
+@register(outgoing=True, pattern="^.pin(?: |$)(.*)", groups_only=True)
+async def pin(msg):
+    """ For .pin command, pins the replied/tagged message on the top the chat. """
+    # Admin or creator check
+    chat = await msg.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await msg.edit(NO_ADMIN)
+        return
+
+    to_pin = msg.reply_to_msg_id
+
+    if not to_pin:
+        await msg.edit("`Reply to a message to pin it.`")
+        return
+
+    options = msg.pattern_match.group(1)
+
+    is_silent = True
+
+    if options.lower() == "loud":
+        is_silent = False
+
+    try:
+        await msg.client(
+            UpdatePinnedMessageRequest(msg.to_id, to_pin, is_silent))
+    except BadRequestError:
+        await msg.edit(NO_PERM)
+        return
+
+    await msg.edit("`Pinned Successfully!`")
+
+    user = await get_user_from_id(msg.from_id, msg)
+
+    if  LOGGER_GROUP:
+        await msg.client.send_message(
+            LOGGER_GROUP, "#PIN\n"
+            f"ADMIN: [{user.first_name}](tg://user?id={user.id})\n"
+            f"CHAT: {msg.chat.title}(`{msg.chat_id}`)\n"
+            f"LOUD: {not is_silent}")
+
+
 CMD_HELP.update(
     {
         "admin": """
