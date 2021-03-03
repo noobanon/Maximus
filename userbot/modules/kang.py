@@ -47,7 +47,7 @@ async def kang(args):
     kang_meme = random.choice(KANGING_STR)
     
     
-    user = await borg.get_me()
+    user = await bot.get_me()
     if not user.username:
         user.username = user.first_name
     message = await args.get_reply_message()
