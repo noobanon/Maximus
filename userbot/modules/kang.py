@@ -10,7 +10,7 @@ from PIL import Image
 import random
 from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto
 from userbot.events import register
-from userbot import bot, CMD_HELP
+from userbot import bot, CMD_HELP, DEFAULT_STICKER_PACK
 
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import InputStickerSetID
