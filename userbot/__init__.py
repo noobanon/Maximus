@@ -40,6 +40,9 @@ except NameError:
 
     API_HASH = os.environ.get("API_HASH", None)
     
+    DEFAULT_STICKER_PACK = os.environ.get("DEFAULT_STICKER_PACK", None)
+    DEFAULT_ANIMATED_PACK = os.environ.get("DEFAULT_ANIMATED_PACK", None)
+    
     SUDO_USERS = os.environ.get("SUDO_USERS", None)
     TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "Maximus")
     
