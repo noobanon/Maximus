@@ -431,6 +431,7 @@ async def pin(msg):
         return
 
     to_pin = msg.reply_to_msg_id
+    x = msg.reply_to_msg_id
 
     if not to_pin:
         await msg.edit("`Reply to a message to pin it.`")
@@ -450,7 +451,7 @@ async def pin(msg):
         await msg.edit(NO_PERM)
         return
 
-    await msg.edit("`Pinned Successfully!`")
+    await msg.edit("Pinned [this message](https://t.me/c/{cht.id}/{x})")
 
     user = await get_user_from_id(msg.from_id, msg)
 
