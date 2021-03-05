@@ -485,6 +485,7 @@ CMD_HELP.update(
   `del` -> delete a message.
   `purge` -> purge message(s)
   `adminlist` -> Get adminlist in chat.
+   `.leave` -> Leave a chat
 """
     }
 )
