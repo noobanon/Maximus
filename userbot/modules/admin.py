@@ -462,6 +462,11 @@ async def pin(msg):
             f"CHAT: {msg.chat.title}(`{msg.chat_id}`)\n"
             f"LOUD: {not is_silent}")
 
+@register(outgoing=True, pattern="^.leave$")
+async def kickme(leave):
+    """ Basically it's .kickme command """
+    await leave.edit("`I'm leabing this kensur group kek`")
+    await bot(LeaveChannelRequest(leave.chat_id))
 
 CMD_HELP.update(
     {
