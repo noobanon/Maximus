@@ -1,5 +1,5 @@
 
-""" Userborg module for kanging stickers or making new ones.
+""" User module for kanging stickers or making new ones.
 .kang <emoji(optional)>"""
 
 import io
@@ -60,7 +60,7 @@ async def kang(args):
         if isinstance(message.media, MessageMediaPhoto):
             await args.edit(f"`{kang_meme}`")
             photo = io.BytesIO()
-            photo = await borg.download_media(message.photo, photo)
+            photo = await bot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split('/'):
             await args.edit(f"`{kang_meme}`")
             photo = io.BytesIO()
@@ -96,7 +96,7 @@ async def kang(args):
             emoji = "🤔"
         pack = 1
         if len(splat) == 3:
-            pack = splat[2]  # User sent borgh
+            pack = splat[2]  # User sent bot
             emoji = splat[1]
         elif len(splat) == 2:
             if splat[1].isnumeric():
@@ -195,7 +195,7 @@ async def kang(args):
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
                     await args.edit(
-                        "`Failed to add sticker, use` @Stickers `borg to add the sticker manually.`"
+                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
                     )
                     return
                 await conv.send_message(emoji)
@@ -226,7 +226,7 @@ async def kang(args):
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
                     await args.edit(
-                        "`Failed to add sticker, use` @Stickers `borg to add the sticker manually.`"
+                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
                     )
                     return
                 await conv.send_message(emoji)
@@ -302,7 +302,7 @@ async def get_pack_info(event):
         await event.edit("`This is not a sticker. Reply to a sticker.`")
         return
 
-    get_stickerset = await borg(
+    get_stickerset = await bot(
         GetStickerSetRequest(
             InputStickerSetID(
                 id=stickerset_attr.stickerset.id,
