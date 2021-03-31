@@ -2,6 +2,19 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
+HELP.update(
+    {
+        "**Admin Tools**": "__ban, unban, promote, demote, kick, mute, unmute, gmute, ungmute, pin, purge, del, invite__",
+        "**AFK**": "__afk, unafk__",
+        "**Alive**": "__alive, ping__",
+        "**Developer**": "__eval, term__",
+        "**Misc**": "__paste, tr, whois, id__",
+        "**Notes**": "__save, get, clear, clearall, notes__",
+        "**Sticker**": "__kang, stkrinfo__",
+        "**Greetings**": "__setwelcome, clearwelcome__",
+    }
+)
+
 @register(outgoing=True, pattern="^.help(?: |$)(.*)")
 async def help(event):
     """ For .help command,"""
