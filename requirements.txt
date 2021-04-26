@@ -22,4 +22,4 @@ python-dotenv
 aiohttp
 telethon-session-sqlalchemy
 async_generator
-Telegraph
+
