@@ -10,6 +10,7 @@ from userbot.events import register
 async def locks(event):
     input_str = event.pattern_match.group(1).lower()
     peer_id = event.chat_id
+    user = await get_user_from_event(event)
     msg = None
     media = None
     sticker = None
@@ -175,7 +176,7 @@ async def rem_locks(event):
         await event.client(
             EditChatDefaultBannedRightsRequest(peer=peer_id,
                                                banned_rights=unlock_rights))
-        await event.edit(f"`Unlocked {what} for ZonersChat chat bhay Start Chit Chat !!`")
+        await event.edit(f"`Unlocked {what} chat bhay Start Chit Chat !!`")
     except BaseException as e:
         await event.edit(
             f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
