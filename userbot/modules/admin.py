@@ -794,7 +794,6 @@ async def pin(msg):
             f"LOUD: {not is_silent}")
 
 @register(outgoing=True, pattern="^\.unpin(?: |$)(.*)")
-@errors_handler
 async def pin(msg):
     if msg.fwd_from:
         return
