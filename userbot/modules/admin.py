@@ -70,25 +70,7 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
-async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
-    parse_mode = parse_mode or "md"
-    link_preview = link_preview or False
-    time = time or 5
-    if event.sender_id in Config.SUDO_USERS:
-        reply_to = await event.get_reply_message()
-        catevent = (
-            await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
-            if reply_to
-            else await event.reply(
-                text, link_preview=link_preview, parse_mode=parse_mode
-            )
-        )
-    else:
-        msg = await event.edit(
-            text, link_preview=link_preview, parse_mode=parse_mode
-        )
-    await asyncio.sleep(time)
-    return await msg.delete()
+
 
 async def get_user_from_event(event):
     """ Get the user from argument or replied message. """
@@ -802,7 +784,7 @@ async def pin(msg):
     to_unpin = msg.reply_to_msg_id
     options = (msg.pattern_match.group(1)).strip()
     if not to_unpin and options != "all":
-        await edit_delete(msg, "`Reply to a message to unpin it or use .unpin all`", 5)
+        await msg.edit("`Reply to a message to unpin it or use .unpin all`")
         return
     if to_unpin and not options:
         try:
