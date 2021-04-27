@@ -1,0 +1,57 @@
+{
+   "addons": [
+      {
+         "options": {
+            "version": "12"
+         },
+         "plan": "heroku-postgresql"
+      }
+   ],
+  "name": "Maximus",
+  "description": "Simple Fast Non Suspendable Userbot By @noobanon",
+  "env": {
+    "API_ID": {
+      "description": "Get this value from my.telegram.org.",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org.",
+      "required": true
+    },
+    "STRING_SESSION": {
+      "description": "Get this value by running [python3 mysession.py] in Termux or local system.",
+      "required": true
+    },
+    "DATABASE_URL": {
+      "description": "This is for the database account, you can obtain it from mongodb.com.",
+      "required": true
+    },
+    "SUDO_USERS": {
+      "description": "Your Sudo Users",
+      "required": false
+    },
+    "LOGGER": {
+      "description": "Set to true if you want logger support.",
+      "required": true,
+      "vale": "."
+    },
+    "LOGGER_GROUP": {
+      "description": "Set your private chat user id.",
+      "required": true,
+      "vale": "-100"
+    
+  },
+  "PM_AUTO_BAN": {
+      "description": "Set This True If you want pm auto ban.",
+      "required": true,
+      "vale": "True"
+    
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
+}
