@@ -32,7 +32,7 @@
       "value": "False"
     },
     "LOGGER_GROUP": {
-      "description": "ChatID of the Log group. Set it to '0' if BOTLOG = False and/or if LOGSPAMMER = False.",
+      "description": "ChatID of your private group. Example: -1001368324312",
       "value": "0"
     },
     
