@@ -69,7 +69,7 @@ def register(**args):
             except KeyboardInterrupt:
                 pass
             except BaseException as e:
-                LOGS.exception(e)  # Log the error in console
+                LOGGER.exception(e)  # Log the error in console
                 # Check if we have to disable error logging message.
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
