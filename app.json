@@ -9,7 +9,7 @@
    ],
   "name": "Maximus",
   "description": "Simple Fast Non Suspendable Userbot By @noobanon",
-  "logo": "https://telegra.ph/file/66cdc2a48c85419a03e93.jpg"
+  "logo": "https://telegra.ph/file/66cdc2a48c85419a03e93.jpg",
   "env": {
     "API_ID": {
       "description": "Get this value from my.telegram.org.",
@@ -20,7 +20,7 @@
       "required": true
     },
     "STRING_SESSION": {
-      "description": "Get this value by running [python3 mysession.py] in Termux or local system.",
+      "description": "Get this value in telegram using this bot @usetgxbot",
       "required": true
     },
     "SUDO_USERS": {
