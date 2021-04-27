@@ -296,11 +296,11 @@ CMD_HELP.update(
         "extra": [
             "Extra/Support",
             " - `.paste`: Create a paste or a shortened URL using Dogbin (https://del.dog/).\n"
-            " - `.get_dogbin_content: Get the content of a paste or shortened URL from Dogbin (https://del.dog/).\n"
-            " - `.pastestats`: Get stats of a paste or shortened URL from Dogbin (https://del.dog/).\n"
-            " - `.repo`: Get gihub repo link\n"
-            " - `.support`: Get Support Chat Link\n"
-            " - `.supportchannel`: Get Updates Channel Link\n",
+            "\n - `.get_dogbin_content: Get the content of a paste or shortened URL from Dogbin (https://del.dog/).\n"
+            "\n - `.pastestats`: Get stats of a paste or shortened URL from Dogbin (https://del.dog/). \n"
+            "\n - `.repo`: Get gihub repo link\n"
+            "\n - `.support`: Get Support Chat Link\n"
+            "\n - `.supportchannel`: Get Updates Channel Link\n",
             
         ]
     }
