@@ -8,7 +8,10 @@ Userbot module to help you manage a group
 
 from asyncio import sleep
 from os import remove
+import os
+import re
 
+import requests
 from telethon.errors import (BadRequestError, ChatAdminRequiredError,
                              ImageProcessFailedError, PhotoCropSizeSmallError,
                              UserAdminInvalidError)
@@ -67,6 +70,25 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
+async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
+    parse_mode = parse_mode or "md"
+    link_preview = link_preview or False
+    time = time or 5
+    if event.sender_id in Config.SUDO_USERS:
+        reply_to = await event.get_reply_message()
+        catevent = (
+            await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
+            if reply_to
+            else await event.reply(
+                text, link_preview=link_preview, parse_mode=parse_mode
+            )
+        )
+    else:
+        catevent = await event.edit(
+            text, link_preview=link_preview, parse_mode=parse_mode
+        )
+    await asyncio.sleep(time)
+    return await catevent.delete()
 
 async def get_user_from_event(event):
     """ Get the user from argument or replied message. """
@@ -772,6 +794,7 @@ async def pin(msg):
             f"LOUD: {not is_silent}")
 
 @register(outgoing=True, pattern="^\.unpin(?: |$)(.*)")
+@errors_handler
 async def pin(msg):
     if msg.fwd_from:
         return
@@ -800,7 +823,7 @@ async def pin(msg):
         return await edit_delete(
             msg, "`Reply to a message to unpin it or use .unpin all`", 5
         )
-    await edit_delete(msg, "`Unpinned Successfully!`", 3)
+    await msg.delete(msg, "`Unpinned Successfully!`", 3)
     user = await get_user_from_id(msg.sender_id, msg)
     if LOGGER and not msg.is_private:
         try:
