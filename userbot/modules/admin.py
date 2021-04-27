@@ -84,11 +84,11 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
             )
         )
     else:
-        catevent = await event.edit(
+        msg = await event.edit(
             text, link_preview=link_preview, parse_mode=parse_mode
         )
     await asyncio.sleep(time)
-    return await catevent.delete()
+    return await msg.delete()
 
 async def get_user_from_event(event):
     """ Get the user from argument or replied message. """
@@ -808,21 +808,21 @@ async def pin(msg):
         try:
             await msg.client.unpin_message(msg.chat_id, to_unpin)
         except BadRequestError:
-            return await edit_delete(msg, NO_PERM, 5)
+            return await msg.edit(NO_PERM)
         except Exception as e:
-            return await edit_delete(msg, f"`{str(e)}`", 5)
+            return await msg.edit(msg, f"`{str(e)}`")
     elif options == "all":
         try:
             await msg.client.unpin_message(msg.chat_id)
         except BadRequestError:
-            return await edit_delete(msg, NO_PERM, 5)
+            return await msg.edit(NO_PERM)
         except Exception as e:
-            return await edit_delete(msg, f"`{str(e)}`", 5)
+            return await msg.edit(msg, f"`{str(e)}`")
     else:
-        return await edit_delete(
-            msg, "`Reply to a message to unpin it or use .unpin all`", 5
+        return await msg.edit(
+            msg, "`Reply to a message to unpin it or use .unpin all`"
         )
-    await msg.delete(msg, "`Unpinned Successfully!`", 3)
+    await msg.edit("`Unpinned Successfully!`")
     user = await get_user_from_id(msg.sender_id, msg)
     if LOGGER and not msg.is_private:
         try:
