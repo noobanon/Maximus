@@ -1,17 +1,20 @@
 {
-   "addons": [
-      {
-         "options": {
-            "version": "12"
-         },
-         "plan": "heroku-postgresql"
-      }
-   ],
   "name": "Maximus",
-  "description": "Simple Fast Non Suspendable Userbot By @noobanon",
+  "description": "[Maximus]Simple Fast Non Suspendable Userbot By @noobanon",
   "logo": "https://telegra.ph/file/66cdc2a48c85419a03e93.jpg",
+  "keywords": [
+    "telegram",
+    "userbot",
+    "plugin",
+    "modular",
+    "productivity"
+  ],
+  "repository": "https://github.com/noobanon/maximus",
+  "website": "https://telegra.ph/Maximus-Userbot-04-27",
+  "success_url": "https://t.me/TheBotSupport",
+  "stack": "container",
   "env": {
-    "API_ID": {
+    "API_KEY": {
       "description": "Get this value from my.telegram.org.",
       "required": true
     },
@@ -20,35 +23,34 @@
       "required": true
     },
     "STRING_SESSION": {
-      "description": "Get this value in telegram using this bot @usetgxbot",
+      "description": "Get this value in telegram using this @usetgxbot.",
       "required": true
     },
-    "SUDO_USERS": {
-      "description": "Your Sudo Users",
-      "required": false
-    },
+    
     "LOGGER": {
-      "description": "Set to true if you want logger support.",
-      "required": true,
-      "vale": "."
+      "description": "Incase you want to turn off logging, put this to false",
+      "value": "False"
     },
     "LOGGER_GROUP": {
-      "description": "Set your private chat user id.",
-      "required": true,
-      "vale": "-100"
+      "description": "ChatID of the Log group. Set it to '0' if BOTLOG = False and/or if LOGSPAMMER = False.",
+      "value": "0"
+    },
     
-  },
-  "PM_AUTO_BAN": {
-      "description": "Set This True If you want pm auto ban.",
-      "required": true,
-      "vale": "True"
-    
-  },
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      
+    "SUDO_USERS": {
+      "description": "Set the default city for the userbot's weather module.",
+      "required": false
+    },
+    "PM_AUTO_BAN": {
+      "description": "Use this value True if you want to block users after pm message extend",
+      "value": "True"
     }
-  }
-}
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ]
 }
