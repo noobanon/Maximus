@@ -773,42 +773,45 @@ async def pin(msg):
 
 @register(outgoing=True, pattern="^\.unpin(?: |$)(.*)")
 async def pin(msg):
-    """ For .pin command, pins the replied/tagged message on the top the chat. """
-    # Admin or creator check
-    chat = await msg.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-
-    # If not admin and not creator, return
-    if not admin and not creator:
-        await msg.edit(NO_ADMIN)
+    if msg.fwd_from:
         return
-
-    to_pin = msg.reply_to_msg_id
-
-    if not to_pin:
-        await msg.edit("`Reply to a message to unpin it.`")
+    if not msg.is_private:
+        await msg.get_chat()
+    to_unpin = msg.reply_to_msg_id
+    options = (msg.pattern_match.group(1)).strip()
+    if not to_unpin and options != "all":
+        await edit_delete(msg, "`Reply to a message to unpin it or use .unpin all`", 5)
         return
-
-    options = msg.pattern_match.group(1)
-
-    try:
-        await msg.unpin(
-            UpdatePinnedMessageRequest(to_pin))
-    except BadRequestError:
-        await msg.edit(NO_PERM)
-        return
-
-    await msg.edit("`Unpinned Successfully!`")
-
-    user = await get_user_from_id(msg.from_id, msg)
-
-    if LOGGER:
-        await msg.client.send_message(
-            LOGGER_GROUP, "#PIN\n"
-            f"ADMIN: [{user.first_name}](tg://user?id={user.id})\n"
-            f"CHAT: {msg.chat.title}(`{msg.chat_id}`)")
-            #f"LOUD: {not is_silent}")
+    if to_unpin and not options:
+        try:
+            await msg.client.unpin_message(msg.chat_id, to_unpin)
+        except BadRequestError:
+            return await edit_delete(msg, NO_PERM, 5)
+        except Exception as e:
+            return await edit_delete(msg, f"`{str(e)}`", 5)
+    elif options == "all":
+        try:
+            await msg.client.unpin_message(msg.chat_id)
+        except BadRequestError:
+            return await edit_delete(msg, NO_PERM, 5)
+        except Exception as e:
+            return await edit_delete(msg, f"`{str(e)}`", 5)
+    else:
+        return await edit_delete(
+            msg, "`Reply to a message to unpin it or use .unpin all`", 5
+        )
+    await edit_delete(msg, "`Unpinned Successfully!`", 3)
+    user = await get_user_from_id(msg.sender_id, msg)
+    if LOGGER and not msg.is_private:
+        try:
+            await msg.client.send_message(
+                LOGGER_GROUP,
+                "#UNPIN\n"
+                f"**Admin : **[{user.first_name}](tg://user?id={user.id})\n"
+                f"**Chat : **{msg.chat.title}(`{msg.chat_id}`)\n",
+            )
+        except Exception as e:
+            LOGS.info(str(e))
 
 @register(outgoing=True, pattern="^\.kick(?: |$)(.*)")
 async def kick(usr):
