@@ -293,15 +293,15 @@ async def botlogs(e):
 
 CMD_HELP.update(
     {
-        "extra": [
-            "Extra/Support",
-            " - `.paste`: Create a paste or a shortened URL using Dogbin (https://del.dog/).\n"
-            "\n - `.get_dogbin_content: Get the content of a paste or shortened URL from Dogbin (https://del.dog/).\n"
-            "\n - `.pastestats`: Get stats of a paste or shortened URL from Dogbin (https://del.dog/). \n"
-            "\n - `.repo`: Get gihub repo link\n"
-            "\n - `.support`: Get Support Chat Link\n"
-            "\n - `.supportchannel`: Get Updates Channel Link\n",
-            
-        ]
+        "extra": """
+『 **Extra Tools** 』
+  `.paste`-> Create a paste on dogbin
+  `.get_dogbin_content` -> Get the content of a paste.
+  `.pastestats` -> Get stats of a paste.
+  `.repo` -> Get gihub repo link.
+  `.support` -> Link of support group.
+  `.supportchannel` -> Updates Channel.
+  """
+
     }
 )
