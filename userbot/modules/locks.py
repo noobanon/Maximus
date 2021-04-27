@@ -125,7 +125,7 @@ async def locks(event):
         await event.client(
             EditChatDefaultBannedRightsRequest(peer=peer_id,
                                                banned_rights=lock_rights))
-        await event.client.send_message(f"`[{user.first_name}](tg://user?id={user.id}) locked {what} in {promt.chat.title}!!`")
+        await event.edit(f"`locked {what} in {event.chat.title}!!`")
     except BaseException as e:
         await event.edit(
             f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
