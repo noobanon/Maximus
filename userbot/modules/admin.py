@@ -794,7 +794,7 @@ async def pin(msg):
 
     try:
         await msg.unpin(
-            UpdatePinnedMessageRequest(msg.to_id, to_pin))
+            UpdatePinnedMessageRequest(to_pin))
     except BadRequestError:
         await msg.edit(NO_PERM)
         return
