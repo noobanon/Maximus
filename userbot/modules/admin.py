@@ -85,7 +85,7 @@ async def get_user_from_event(event):
             user = int(user)
 
         if not user:
-            return await event.reply("`Pass the user's username, id or reply!`")
+            return await event.edit("`Pass the user's username, id or reply!`")
 
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
@@ -98,7 +98,7 @@ async def get_user_from_event(event):
         try:
             user_obj = await event.client.get_entity(user)
         except (TypeError, ValueError) as err:
-            return await event.reply(str(err))
+            return await event.edit(str(err))
 
     return user_obj, extra
 
