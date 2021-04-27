@@ -290,3 +290,18 @@ async def botlogs(e):
         reply_to=e.id,
         caption="`Bot logs are here!`",
     )
+
+CMD_HELP.update(
+    {
+        "extra": [
+            "Extra/Support",
+            " - `.paste`: Create a paste or a shortened URL using Dogbin (https://del.dog/).\n"
+            " - `.get_dogbin_content: Get the content of a paste or shortened URL from Dogbin (https://del.dog/).\n"
+            " - `.pastestats`: Get stats of a paste or shortened URL from Dogbin (https://del.dog/).\n"
+            " - `.repo`: Get gihub repo link"
+            " - `.support`: Get Support Chat Link"
+            " - `.supportchannel`: Get Updates Channel Link",
+            
+        ]
+    }
+)
