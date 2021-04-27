@@ -226,4 +226,4 @@ I would like to thank people who assisted me throughout this project:
 
 and many more people who aren't mentioned here.
 
-Found Bugs? Create an issue on the issue tracker, or post it in the [support group](https://t.me/userbot_support).
+Found Bugs? Create an issue on the issue tracker, or post it in the [support group](https://t.me/TheBotSupport).
