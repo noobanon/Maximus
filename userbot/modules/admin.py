@@ -771,6 +771,44 @@ async def pin(msg):
             f"CHAT: {msg.chat.title}(`{msg.chat_id}`)\n"
             f"LOUD: {not is_silent}")
 
+@register(outgoing=True, pattern="^\.unpin(?: |$)(.*)")
+async def pin(msg):
+    """ For .pin command, pins the replied/tagged message on the top the chat. """
+    # Admin or creator check
+    chat = await msg.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await msg.edit(NO_ADMIN)
+        return
+
+    to_pin = msg.reply_to_msg_id
+
+    if not to_pin:
+        await msg.edit("`Reply to a message to unpin it.`")
+        return
+
+    options = msg.pattern_match.group(1)
+
+    try:
+        await client.unpin_message(
+            UpdatePinnedMessageRequest(msg.to_id, to_pin))
+    except BadRequestError:
+        await msg.edit(NO_PERM)
+        return
+
+    await msg.edit("`Unpinned Successfully!`")
+
+    user = await get_user_from_id(msg.from_id, msg)
+
+    if LOGGER:
+        await msg.client.send_message(
+            LOGGER_GROUP, "#PIN\n"
+            f"ADMIN: [{user.first_name}](tg://user?id={user.id})\n"
+            f"CHAT: {msg.chat.title}(`{msg.chat_id}`)")
+            #f"LOUD: {not is_silent}")
 
 @register(outgoing=True, pattern="^\.kick(?: |$)(.*)")
 async def kick(usr):
