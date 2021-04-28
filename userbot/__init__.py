@@ -103,7 +103,8 @@ else:
 
 # Global Variables
 SNIPE_TEXT = ""
-COUNT_MSG = 0
+COUNT_MSG = 3
+LASTMSG = {} 
 BRAIN_CHECKER = []
 USERS = {}
 SPAM = False
