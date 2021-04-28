@@ -1,7 +1,6 @@
-
-
 """ Userbot module for keeping control who PM you. """
-
+import asyncio
+import io
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.tl.functions.users import GetFullUserRequest
@@ -18,7 +17,6 @@ from userbot.events import register
 UNAPPROVED_MSG = ("*Bleep Blop! This is a Bot. Don't fret* \n\n"
                   "`If You Are Hater then Maderchod Maa Chudao Bhosdike MaderHod`.`"
                   "`If You Are One Of My Friends Kindly Wait Till Me Come Online.`\n\n"
-                  "`So Tell Me What You Want My Sir is Offline So Now Goto @ZonersChat For Help XD‚`"
                   "`As far as i know, he doesn't usually approve Retards.`\n\n"
                   "`Spam Can make you blocked`")
 # =================================================================
@@ -66,7 +64,7 @@ async def permitpm(event):
                 else:
                     COUNT_PM[event.chat_id] = COUNT_PM[event.chat_id] + 1
 
-                if COUNT_PM[event.chat_id] > 4:
+                if COUNT_PM[event.chat_id] > 3:
                     await event.respond(
                         "`You were spamming my peru master's Inox.`\n"
                         "`You chuu nubfuk been BLOCKED and reported as SPAM, now GTFO.`"
@@ -226,7 +224,8 @@ async def disapprovepm(disapprvpm):
         await disapprvpm.edit(
             f"[{name0}](tg://user?id={disapprvpm.chat_id}) `Nub Nimba disapproved to PM KEK!`"
             )
-
+        await asyncio.sleep(2)
+        await disapprvpm.delete()
         if LOGGER:
             await disapprvpm.client.send_message(
                 LOGGER_GROUP,
