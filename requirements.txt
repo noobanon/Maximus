@@ -1,5 +1,5 @@
 telethon
-requests
+requests>=2.18.4
 gtts
 urbandict
 gsearch
@@ -7,7 +7,7 @@ wikipedia
 speedtest-cli
 zalgo_text
 hastebin-client
-pybase64
+pybase64>=0.4.0
 google_images_download
 hachoir
 Pillow
@@ -17,9 +17,10 @@ gTTS
 googletrans
 spongemock
 gTTS-token
-psycopg2
+psycopg2 == 2.8.6
 python-dotenv
 aiohttp
 telethon-session-sqlalchemy
 async_generator
+
 
