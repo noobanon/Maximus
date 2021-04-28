@@ -29,7 +29,7 @@ botclone() {
 # Requirement install function
 reqinstall() {
     echo "***Installing Requirements***"
-    sudo python3.7 -m pip install -r requirements.txt
+    sudo python3.8 -m pip install -r requirements.txt
     curl -sLo bot https://raw.githubusercontent.com/noobanon/Maximus/modular/init/userbot
     clear
 }
@@ -82,7 +82,7 @@ LOGGER=$LOGGER
 LOGGER_GROUP=$LOGGER_GROUP
 OPEN_WEATHER_MAP_APPID=$OPEN_WEATHER_MAP_APPID
 DB_URI=$DB_URI" >> config.env
-sudo mv config.env ~/Telegram-UserBot
+sudo mv config.env ~/Maximus
 }
 
 #Generate the userbot.session
@@ -94,7 +94,7 @@ dockerspin() {
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo chmod 777 /var/run/docker.sock
-cd ~/Telegram-UserBot
+cd ~/Maximus
 docker build -t userbot .
 }
 # Systemd service bringup
