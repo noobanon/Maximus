@@ -17,7 +17,7 @@ gTTS
 googletrans
 spongemock
 gTTS-token
-psycopg2>=2.8.6
+psycopg2-binary
 python-dotenv
 aiohttp
 telethon-session-sqlalchemy
