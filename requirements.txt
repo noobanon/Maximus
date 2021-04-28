@@ -23,5 +23,6 @@ aiohttp
 telethon-session-sqlalchemy
 async_generator
 cowpy
+gitpython
 
 
