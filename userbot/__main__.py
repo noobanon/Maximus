@@ -21,7 +21,7 @@ LOGS.info("Your Bot is alive! Test it by typing .alive on any chat."
           "Should you need assistance, head to https://t.me/TheBotSupport")
 LOGS.info("Your Bot Version is 2.2-a")
 
-if len(argv) not in (1, 3, 4):
+if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.send_message(LOGGER_GROUP, "Userbot is alive")
