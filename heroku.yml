@@ -1,3 +1,5 @@
 build: 
-  procfile:
-      worker: Procfile
+  docker:
+      worker: Dockerfile
+run:
+   worker: python3 -m nana
