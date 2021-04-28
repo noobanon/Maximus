@@ -23,7 +23,7 @@ packageinstall() {
 botclone() {
     cd ~
     git clone https://github.com/noobanon/Maximus -b master
-    cd Telegram-UserBot
+    cd Maximus
 }
 
 # Requirement install function
