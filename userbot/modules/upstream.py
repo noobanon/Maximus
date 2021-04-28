@@ -1,4 +1,4 @@
-This module updates the userbot based on Upstream revision
+"""This module updates the userbot based on Upstream revision
 """
 
 from os import remove, execl
