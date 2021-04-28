@@ -26,7 +26,7 @@ async def bleeding_upstream(bleed):
             "remote",
             "add",
             "origin",
-            "https://github.com/Nitin1818/UserBotN"
+            "https://github.com/noobanon/Maximus"
         ], stdout=subprocess.PIPE,)
 
     subprocess.run(
@@ -55,9 +55,9 @@ async def bleeding_upstream(bleed):
     bleed.client.disconnect()
 
 
-@register(outgoing=True, pattern="^.updatestable$")
+@register(outgoing=True, pattern="^.update$")
 async def stable_upstream(stable):
-    await stable.edit("`Please wait while I upstream myself!`")
+    await stable.edit("`Please wait while I update myself!`")
     subprocess.run(
         [
             "git",
@@ -72,7 +72,7 @@ async def stable_upstream(stable):
             "remote",
             "add",
             "origin",
-            "https://github.com/Nitin1818/UserBotN"
+            "https://github.com/noobanon/Maximus"
         ], stdout=subprocess.PIPE,)
 
     subprocess.run(
