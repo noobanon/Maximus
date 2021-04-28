@@ -152,7 +152,7 @@ async def upstream(ups):
         # Heroku configs not set, just restart the bot
         await ups.edit(
             "`Successfully Updated!\n"
-            "Maximus is restarting... Wait for a few seconds, then "
+            "Maximus is restarting... Wait 1 Minute, then "
             'check if Maximus is alive by using the ".alive" command.`'
         )
 
