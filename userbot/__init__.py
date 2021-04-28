@@ -54,7 +54,7 @@ except NameError:
     LOGGER_GROUP = int(os.environ.get("LOGGER_GROUP", "0"))
 
     LOGGER = sb(os.environ.get(
-        "LOGGER", "False"
+        "LOGGER", "True"
     ))  # Incase you want to turn off logging, put this to false
 
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
