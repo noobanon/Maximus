@@ -51,6 +51,14 @@
     "HEROKU_APPNAME": {
       "description": "Right Down Your Heroku App Name",
       "required": true
+      },
+      "DEFAULT_STICKER_PACK": {
+      "description": "Use This if you have old sticker pack get this from @Stickers",
+      "required": false
+      },
+      "DEFAULT_ANIMATED_PACK": {
+      "description": "Use This if you have old sticker pack get this from @Stickers",
+      "required": false
       }
   },
   "addons": [
