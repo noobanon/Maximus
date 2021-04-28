@@ -13,7 +13,7 @@ from userbot.modules import ALL_MODULES
 
 
 async def main():
-    await bot.start()
+    bot.start()
     for module_name in ALL_MODULES:
         imported_module = importlib.import_module("userbot.modules." + module_name)
         LOGS.info("Your Bot is alive! Test it by typing .alive on any chat." "Should you need assistance, head to https://t.me/TheBotSupport")
