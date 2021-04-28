@@ -87,7 +87,7 @@ async def upstream(ups):
             remove("output.txt")
         else:
             await ups.edit(changelog_str)
-        await ups.respond('`Use the ".update now" command to update`')
+        await ups.respond('Use the "`.update now`" command to update')
         return
 
     await ups.edit("`New update found, updating...`")
@@ -115,8 +115,8 @@ async def upstream(ups):
             return
 
         await ups.edit(
-            "`Heroku configuration found! Updater will try to update and restart Paperplane"
-            "automatically if succeeded. Try checking if Paperplane is alive by using the"
+            "`Heroku configuration found! Updater will try to update and restart Maximus/n"
+            "automatically if succeeded. Try checking if Maximus is alive by using the"
             '".alive" command after a few minutes.`'
         )
         if not STRING_SESSION:
