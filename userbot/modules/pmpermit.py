@@ -78,9 +78,9 @@ async def permitpm(event):
                         del COUNT_PM[event.chat_id]
                         del LASTMSG[event.chat_id]
                     except KeyError:
-                        if BOTLOG:
+                        if LOGGER:
                             await event.client.send_message(
-                                BOTLOG_CHATID,
+                                LOGGER_GROUP,
                                 "Count PM is seemingly going retard, plis restart bot!",
                             )
                         LOGS.info("CountPM wen't rarted boi")
@@ -89,11 +89,11 @@ async def permitpm(event):
                     await event.client(BlockRequest(event.chat_id))
                     await event.client(ReportSpamRequest(peer=event.chat_id))
 
-                    if BOTLOG:
+                    if LOGGER:
                         name = await event.client.get_entity(event.chat_id)
                         name0 = str(name.first_name)
                         await event.client.send_message(
-                            BOTLOG_CHATID,
+                            LOGGER_GROUP,
                             "["
                             + name0
                             + "](tg://user?id="
@@ -126,9 +126,9 @@ async def auto_accept(event):
                     except IntegrityError:
                         return
 
-                if is_approved(event.chat_id) and BOTLOG:
+                if is_approved(event.chat_id) and LOGGER:
                     await event.client.send_message(
-                        BOTLOG_CHATID,
+                        LOGGER_GROUP,
                         "#AUTO-APPROVED\n"
                         + "User: " +
                         f"[{chat.first_name}](tg://user?id={chat.id})",
@@ -197,9 +197,9 @@ async def approvepm(apprvpm):
                                                           limit=1):
             await message.delete()
 
-        if BOTLOG:
+        if LOGGER:
             await apprvpm.client.send_message(
-                BOTLOG_CHATID,
+                LOGGER_GROUP,
                 "#APPROVED\n"
                 + "User: " + f"[{name0}](tg://user?id={uid})",
             )
@@ -229,9 +229,9 @@ async def disapprovepm(disapprvpm):
             f"[{name0}](tg://user?id={disapprvpm.chat_id}) `Nub Nimba disapproved to PM KEK!`"
             )
 
-        if BOTLOG:
+        if LOGGER:
             await disapprvpm.client.send_message(
-                BOTLOG_CHATID,
+                LOGGER_GROUP,
                 f"[{name0}](tg://user?id={disapprvpm.chat_id})"
                 " was disapproved to PM you.",
             )
@@ -263,9 +263,9 @@ async def blockpm(block):
         except AttributeError:  # Non-SQL mode.
             pass
 
-        if BOTLOG:
+        if LOGGER:
             await block.client.send_message(
-                BOTLOG_CHATID,
+                LOGGER_GROUP,
                 "#BLOCKED\n"
                 + "User: " + f"[{name0}](tg://user?id={uid})",
             )
@@ -285,11 +285,11 @@ async def unblockpm(unblock):
             name0 = str(replied_user.user.first_name)
             await unblock.client(UnblockRequest(replied_user.user.id))
 
-        if BOTLOG:
+        if LOGGER:
             await unblock.client.send_message(
-                BOTLOG_CHATID,
+                LOGGER_GROUP,
                 f"[{name0}](tg://user?id={replied_user.user.id})"
-                " was unblocc'd!.",
+                " was unblocked!.",
             )
 
 CMD_HELP.update({
