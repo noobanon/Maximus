@@ -171,3 +171,4 @@ CMD_HELP.update(
             " - `.update now`: Update Maximus if there are any updates available.",
         ]
     }
+    )
