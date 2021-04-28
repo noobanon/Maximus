@@ -1,34 +1,35 @@
-# We're using Alpine stable
-FROM alpine:3.9
+FROM python:3-slim-buster
 
-#
-# We have to uncomment Community repo for some packages
-#
-RUN sed -e 's;^#http\(.*\)/v3.9/community;http\1/v3.9/community;g' -i /etc/apk/repositories
+RUN apt update && apt upgrade -y && \
+    apt install --no-install-recommends -y \
+        bash \
+        curl \
+        ffmpeg \
+        git \
+        gcc \
+        libjpeg62-turbo-dev \
+        libwebp-dev \
+        musl-dev \
+        atomicparsley \
+        neofetch \
+        && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
-#
-# Install all the required packages
-#
-RUN apk add --no-cache python3 \
-    py-pillow py-requests py-sqlalchemy py-psycopg2 \
-    curl neofetch git sudo gcc musl-dev postgresql postgresql-dev
-RUN apk add --no-cache sqlite
-# Copy Python Requirements to /app
+COPY . /usr/src/app/Maximus/
+WORKDIR /usr/src/app/Maximus/
 
-RUN  sed -e 's;^# \(%wheel.*NOPASSWD.*\);\1;g' -i /etc/sudoers
-RUN adduser userbot --disabled-password --home /home/userbot
-RUN adduser userbot wheel
-USER userbot
-WORKDIR /home/userbot/userbot
-COPY ./requirements.txt /home/userbot/userbot
-#
-# Install requirements
-#
-RUN pip3 install -r requirements.txt
-#
-# Copy bot files to /app
-#
-COPY . /home/userbot/userbot
-RUN sudo chown -R userbot /home/userbot/userbot
-RUN sudo chmod -R 777 /home/userbot/userbot
-cmd ["python3","-m","userbot"]
+# "Dirty Fix" for Heroku Dynos to track updates via 'git'.
+# Fork/Clone maintainers may change the clone URL to match
+# the location of their repository. [#ThatsHerokuForYa!]
+RUN if [ ! -d /usr/src/app/Maximus/.git ] ; then \
+    git clone "https://github.com/noobanon/Maximus.git" /tmp/dirty/Maximus/ && \
+    mv -v -u /tmp/dirty/Maximus/.git /usr/src/app/Maximus/ && \
+    rm -rf /tmp/dirty/Maximus/; \
+    fi
+
+# Install PIP packages
+RUN python3 -m pip install --no-warn-script-location --no-cache-dir --upgrade -r requirements.txt
+
+# Cleanup
+RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
+
+ENTRYPOINT ["python", "-m", "userbot"]
