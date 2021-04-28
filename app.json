@@ -48,7 +48,7 @@
       "description": "Get this value from your heroku account",
       "required": true
       },
-    "HEROKU_APIKEY": {
+    "HEROKU_APPNAME": {
       "description": "Right Down Your Heroku App Name",
       "required": true
       }
