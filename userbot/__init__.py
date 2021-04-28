@@ -40,6 +40,9 @@ except NameError:
 
     API_HASH = os.environ.get("API_HASH", None)
     
+    HEROKU_APIKEY = os.environ.get("HEROKU_APIKEY") or None
+    HEROKU_APPNAME = os.environ.get("HEROKU_APPNAME") or None
+    
     DEFAULT_STICKER_PACK = os.environ.get("DEFAULT_STICKER_PACK", None)
     DEFAULT_ANIMATED_PACK = os.environ.get("DEFAULT_ANIMATED_PACK", None)
     
