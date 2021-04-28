@@ -11,8 +11,6 @@ from sqlalchemy.exc import IntegrityError
 from userbot import (COUNT_PM, CMD_HELP, LOGGER, LOGGER_GROUP,
                      PM_AUTO_BAN, LASTMSG, LOGS)
 
-LOGGER = BOTLOG
-LOGGER_GROUP = BOTLOG_CHATID
 
 from userbot.events import register
 
