@@ -24,7 +24,7 @@ UNAPPROVED_MSG = ("*Bleep Blop! This is a Bot. Don't fret* \n\n"
 # =================================================================
 
 
-@register(incoming=True, disable_edited=True)
+@register(incoming=True)
 async def permitpm(event):
     """ Prohibits people from PMing you without approval. \
         Will block retarded nibbas automatically. """
@@ -100,7 +100,7 @@ async def permitpm(event):
                             + " was just another retarded nibba",
                         )
 
-@register(disable_edited=True, outgoing=True)
+@register(outgoing=True)
 async def auto_accept(event):
     """ Will approve automatically if you texted them first. """
     self_user = await event.client.get_me()
