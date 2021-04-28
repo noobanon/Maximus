@@ -125,7 +125,7 @@ async def upstream(ups):
             repo.git.add("config.env", force=True)
 
         # Set git config for commiting session and config
-        repo.config_writer().set_value("user", "name", "Paperplane Updater").release()
+        repo.config_writer().set_value("user", "name", "Maximus Updater").release()
         repo.config_writer().set_value("user", "email", "<>").release()  # No Email
 
         # Make a new commit with session and commit (if they exist), this is only temporary to move them to the Docker image
