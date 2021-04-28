@@ -16,7 +16,7 @@ packageinstall() {
     sudo apt --yes --force-yes install build-essential checkinstall git \
         libreadline-gplv2-dev libncursesw5-dev libssl-dev wget \
         libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-    sudo apt --yes --force-yes install python3.7 docker
+    sudo apt --yes --force-yes install python3.8 docker
 }
 
 # Clone the required repo
