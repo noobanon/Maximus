@@ -3,7 +3,8 @@
 # Licensed under the Raphielscape Public License, Version 1.0 (the "License");
 # you may not use this file except in compliance with the License.
 #
-
+import asyncio
+import io
 from telethon.tl.functions.contacts import BlockRequest
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import ReportSpamRequest
@@ -105,6 +106,7 @@ async def approvepm(apprvpm):
         await apprvpm.edit(
             f"[{name0}](tg://user?id={apprvpm.chat_id}) `User Approved to PM!`"
             )
+        await asyncio.sleep(3)
         await apprvpm.delete()
 
         if LOGGER:
@@ -113,6 +115,7 @@ async def approvepm(apprvpm):
                 f"[{name0}](tg://user?id={apprvpm.chat_id})"
                 "Was Approved to PM you.",
             )
+
 
 @register(outgoing=True, pattern="^.dis$")
 async def disapprovepm(disapprvpm):
