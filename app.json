@@ -43,7 +43,15 @@
     "PM_AUTO_BAN": {
       "description": "Use this value True if you want to block users after pm message extend",
       "value": "True"
-    }
+    },
+    "HEROKU_APIHASH": {
+      "description": "Get this value from your heroku account",
+      "required": true
+      },
+    "HEROKU_APIKEY": {
+      "description": "Right Down Your Heroku App Name",
+      "required": true
+      }
   },
   "addons": [
     {
