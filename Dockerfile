@@ -1,78 +1,35 @@
-# We're using Alpine stable
-FROM python:3.8-alpine
+FROM python:3-slim-buster
 
+RUN apt update && apt upgrade -y && \
+    apt install --no-install-recommends -y \
+        bash \
+        curl \
+        ffmpeg \
+        git \
+        gcc \
+        libjpeg62-turbo-dev \
+        libwebp-dev \
+        musl-dev \
+        atomicparsley \
+        neofetch \
+        && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
-# Installing requirements
-RUN apk add --no-cache --update \
-    bash \
-    build-base \
-    bzip2-dev \
-    curl \
-    figlet \
-    gcc \
-    git \
-    sudo \
-    util-linux \
-    libffi-dev \
-    libpq \
-    libwebp-dev \
-    libxml2 \
-    libxml2-dev \
-    libxslt-dev \
-    linux-headers \
-    musl \
-    neofetch \
-    openssl-dev \
-    php-pgsql \
-    postgresql \
-    postgresql-client \
-    postgresql-dev \
-    py-lxml \
-    py-pillow \
-    py-pip \
-    py-requests \
-    py-sqlalchemy \
-    py-tz \
-    py3-aiohttp \
-    openssl \
-    pv \
-    jq \
-    wget \
-    python3 \
-    python3-dev \
-    readline-dev \
-    sqlite \
-    sqlite-dev \
-    sudo
+COPY . /Maximus/
+WORKDIR /Maximus/
 
-# Installing psycopg2 dependencies
-RUN apk add --no-cache --update gcc python3-dev
+# "Dirty Fix" for Heroku Dynos to track updates via 'git'.
+# Fork/Clone maintainers may change the clone URL to match
+# the location of their repository. [#ThatsHerokuForYa!]
+RUN if [ ! -d /Maximus/.git ] ; then \
+    git clone "https://github.com/noobanon/Maximus.git" /tmp/dirty/Maximus/ && \
+    mv -v -u /tmp/dirty/Maximus/.git /Maximus/ && \
+    rm -rf /tmp/dirty/Maximus/; \
+    fi
 
-# Installing postgresql
-RUN apk add --no-cache --update postgresql postgresql-client postgresql-dev
+# Install PIP packages
+RUN python3 -m pip install --no-warn-script-location --no-cache-dir --upgrade -r requirements.txt
 
-# Installing pillow dependencies
-RUN apk add --no-cache --update jpeg-dev zlib-dev
+# Cleanup
+RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
-# Installing chromium
-RUN apk add --no-cache --update chromium chromium-chromedriver
-
-# Installing libpq-dev before py-psycopg2
-# RUN apk add --no-cache --update libpq-dev
-
-# RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main py-psycopg2
-
-RUN pip3 install --upgrade pip setuptools
-
-# Copy Python Requirements to /app
-
-RUN git clone https://github.com/noobanon/Maximus maximus
-WORKDIR maximus
-
-ENV PATH="/home/userbot/bin:$PATH"
-
-#
-# Install requirements
-#
-RUN sudo pip3 install -r requirements.txt
-CMD ["python3","-m","userbot"]
+ENTRYPOINT ["python", "-m", "userbot"]
