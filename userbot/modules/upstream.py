@@ -72,7 +72,7 @@ async def stable_upstream(stable):
             "remote",
             "add",
             "origin",
-            "https://github.com/noobanon/Maximus"
+            "https://github.com/noobanon/Maximus.git"
         ], stdout=subprocess.PIPE,)
 
     subprocess.run(
