@@ -155,7 +155,6 @@ async def notifon(non_event):
         await non_event.edit("`Notifications from unapproved PM's unmuted!`")
 
 
-@register(outgoing=True, pattern="^.pm$")
 async def approvepm(apprvpm):
     """ For .pm command, give someone the permissions to PM you. """
     if not apprvpm.text[0].isalpha() and apprvpm.text[0] not in ("/", "#", "@", "!"):
@@ -192,6 +191,7 @@ async def approvepm(apprvpm):
                                                           search=UNAPPROVED_MSG, 
                                                           limit=1):
             await message.delete()
+            await apprvpm.delete()
 
         if LOGGER:
             await apprvpm.client.send_message(
@@ -199,6 +199,7 @@ async def approvepm(apprvpm):
                 "#APPROVED\n"
                 + "User: " + f"[{name0}](tg://user?id={uid})",
             )
+
 
 
 @register(outgoing=True, pattern="^.dis$")
