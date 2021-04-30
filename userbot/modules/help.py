@@ -1,11 +1,11 @@
 from userbot import CMD_HELP
 from userbot.events import register
 
-
+#thanks satwik
 @register(outgoing=True, pattern="^.help")
 async def help(event):
     """ For .help command,"""
-    args = event.pattern_match.group(1).lower()
+    args = (event.message.text).split(" ", 1)[1]
     if args:
         if args in CMD_HELP:
             await event.edit(str(CMD_HELP[args]))
