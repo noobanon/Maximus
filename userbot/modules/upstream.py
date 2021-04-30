@@ -115,7 +115,7 @@ async def upstream(ups):
             return
 
         await ups.edit(
-            "`Heroku configuration found! Updater will try to update and restart Maximus/n"
+            "`Heroku configuration found! Updater will try to update and restart Maximus/"
             "automatically if succeeded. Try checking if Maximus is alive by using the"
             '".alive" command after a few minutes.`'
         )
