@@ -154,7 +154,7 @@ async def notifon(non_event):
         delgvar("NOTIF_OFF")
         await non_event.edit("`Notifications from unapproved PM's unmuted!`")
 
-
+@register(outgoing=True, pattern="^.pm$")
 async def approvepm(apprvpm):
     """ For .pm command, give someone the permissions to PM you. """
     if not apprvpm.text[0].isalpha() and apprvpm.text[0] not in ("/", "#", "@", "!"):
