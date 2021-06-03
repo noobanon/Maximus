@@ -1,8 +1,9 @@
 from userbot import CMD_HELP
 from userbot.events import register
+from userbot import bot
 
-#thanks satwik aka okay-retard
-@register(pattern="^.help")
+
+@bot.on(events.NewMessage(pattern="^[.*]help$"))
 async def help(event):
     """ For .help command,"""
     try:
