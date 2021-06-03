@@ -1,6 +1,7 @@
 from userbot import CMD_HELP
 from userbot.events import register
 from userbot import bot
+from telethon import events
 
 
 @bot.on(events.NewMessage(pattern="^[.*]help$"))
