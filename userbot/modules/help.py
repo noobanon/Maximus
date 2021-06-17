@@ -4,7 +4,7 @@ from userbot import bot
 from telethon import events
 
 
-@bot.on(events.NewMessage(pattern="^[.*]help"))
+@bot.on(events.NewMessage(outgoing=True, pattern="^[.*]help"))
 async def help(event):
     """ For .help command,"""
     try:
