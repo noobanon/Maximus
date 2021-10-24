@@ -19,3 +19,4 @@ if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.run_until_disconnected()
+    bot.send_message(-1001246541730, "I'm up!") # Replace chat id with your group id 
