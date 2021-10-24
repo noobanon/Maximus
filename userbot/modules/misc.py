@@ -162,6 +162,12 @@ async def chatidgetter(e):
         await e.edit("This Chat ID: `" + str(e.chat_id) + "`")
 
 
+@register(outgoing=True, pattern="^.leavekek$")
+async def kickme(leave):
+    """ Basically it's .kickme command """
+    await leave.edit("`It's time I iz going away`")
+    await leave.client.kick_participant(leave.chat_id, 'me')
+
 @register(outgoing=True, pattern="^.sleep( [0-9]+)?$")
 async def sleepybot(e):
     message = e.text
@@ -299,6 +305,7 @@ CMD_HELP.update(
   `.get_dogbin_content` -> Get the content of a paste.
   `.pastestats` -> Get stats of a paste.
   `.repo` -> Get gihub repo link.
+  `.leavekek` ->> leave a chat
   `.support` -> Link of support group.
   `.supportchannel` -> Updates Channel.
   """
