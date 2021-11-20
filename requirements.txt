@@ -26,4 +26,5 @@ cowpy
 gitpython
 heroku3
 motor
+dnspython
 
