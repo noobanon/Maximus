@@ -17,7 +17,7 @@ async def _(e):
       await e.client.send_message('sylviorus_scanner', f""".syl x for x in (-1001346778077, -1001480719460, -1001543161085):
    await System.send_message(x, f"/{q} [{send}](tg://user?id={send}) [{sad}](tg://user?id={sad}) // by {ll} ")""")
    await e.client.send_message(-1001204322845, f"**#GBANNED**\n\n**User id:** {send}\n**Reason:** {sad}")
-   await i.edit(f'_User Trapped_ [{send}](tg://user?id={send})')
+   await i.edit(f'__User Trapped__ [{send}](tg://user?id={send})')
  else:
    await e.reply('Please reply to a message')
 
@@ -33,4 +33,4 @@ async def _(e):
        await e.client.send_message('sylviorus_scanner', f""".syl x for x in (-1001346778077, -1001480719460, -1001543161085):
    await System.send_message(x, f"/{q} [{mm}](tg://user?id={mm}) // by [{hh}](tg://user?id={hh}) ")""")
     await e.client.send_message(-1001204322845, f"""**#UNBANNED**\n\n**User id:** {mm}""")
-    await e.edit(f"_Ban Lifted_ [{mm}](tg://user?id={mm})")
+    await e.edit(f"__Ban Lifted__ [{mm}](tg://user?id={mm})")
