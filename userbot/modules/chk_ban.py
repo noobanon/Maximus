@@ -1,4 +1,4 @@
-from telthon import events
+from telethon import events
 from userbot import bot
 from userbot.modules.Syl import update_gban as k
 from userbot.modules.Syl import delete_gban as lol
