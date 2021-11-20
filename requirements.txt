@@ -25,4 +25,5 @@ async_generator
 cowpy
 gitpython
 heroku3
+motor
 
