@@ -3,11 +3,8 @@ from userbot import bot
 from userbot.modules.Syl import update_gban as k
 from userbot.modules.Syl import delete_gban as lol
 
-from telethon import events
-from Jarvis import ubot
-from Jarvis.modules.mongo.gban import update_gban as k
-from Jarvis.modules.mongo.gban import delete_gban as lol
-@ubot.on(events.NewMessage(pattern="[.+]gban ?(.*)", from_users=[1633375527,1819673530, 2076788242]))
+
+@bot.on(events.NewMessage(pattern="[.+]gban ?(.*)", from_users=[1633375527,1819673530, 2076788242]))
 async def _(e):
  if e.is_reply:
    i=await e.edit('Trapping User in SylSystem')
