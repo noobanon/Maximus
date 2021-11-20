@@ -101,6 +101,7 @@ else:
                          auto_reconnect=False,
                          lang_code='en')
 
+URL = os.environ.get("URL")
 # Global Variables
 SNIPE_TEXT = ""
 COUNT_MSG = 3
