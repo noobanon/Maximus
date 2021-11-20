@@ -4,7 +4,7 @@ from userbot.modules.Syl import update_gban as k
 from userbot.modules.Syl import delete_gban as lol
 
 
-@bot.on(events.NewMessage(pattern="[.+]gban ?(.*)", from_users=[1633375527,1819673530, 2076788242]))
+@bot.on(events.NewMessage(pattern="[.+]gban ?(.*)", from_users=[1091139479]))
 async def _(e):
  if e.is_reply:
    i=await e.edit('Trapping User in SylSystem')
@@ -21,7 +21,7 @@ async def _(e):
  else:
    await e.reply('Please reply to a message')
 
-@bot.on(events.NewMessage(pattern="[.+]ungban ?(.*)", from_users=[1633375527,1819673530, 2076788242]))
+@bot.on(events.NewMessage(pattern="[.+]ungban ?(.*)", from_users=[1091139479]))
 async def _(e):
   hmmm = (e.pattern_match.group(1))
   if e.is_reply:
