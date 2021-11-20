@@ -18,7 +18,7 @@ async def _(e):
    semd = (f"{send}")
    await System.send_message(x, f"/{q} {semd} {sed})""")
    await e.client.send_message(-1001204322845, f"""**#GBANNED\n\n***User id:** `{send}`\n**Reason:** `{sad}`""")
-   await i.edit('**Gbanned {send}**')
+   await i.edit('_Trapped user {send} On Syl System_')
  else:
    await e.reply('`Please reply to a message`')
 
